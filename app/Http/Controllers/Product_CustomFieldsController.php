@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\product_customfield;
 use Illuminate\Http\Request;
 
 class Product_CustomFieldsController extends Controller
@@ -78,8 +79,8 @@ class Product_CustomFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(product_customfield $product_customfield)
     {
-        //
+        $product_customfield->delete();
     }
 }
