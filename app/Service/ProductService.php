@@ -8,6 +8,7 @@ use App\product;
 use App\product_category;
 use App\product_customfield;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\This;
 
 class ProductService
@@ -54,18 +55,14 @@ private $custom;
             'is_appear' => $is_appear,
             'description' => $request->description,
         ]);
-        return $request;
-        //for ($i = 0;$i< (int)$request->counter;$i++) {
-         $i=0;
-        foreach ($request->custom_field as $custom)
+        for ($i = 0;$i< (int)$request->counter;$i++) {
             $this->customField::create([
                 'product_id' => $response->id,
                 'custom_field_id' => $request->custom_field[$i],
                 'value' => $request->value[$i],
                 'description' => 'assesses'
             ]);
-        $i++;
-
+        }
         for ($i = 0;$i< (int)$request->ccounter;$i++) {
             $this->pcategory::create([
                 'product_id' => $response->id,
@@ -108,7 +105,11 @@ private $custom;
 
     }
     public function delete(Product $product){
+        $res=DB::table('product_customfields')->where('product_id',$product->id)->delete();
+        $res1=DB::table('product_categories')->where('product_id',$product->id)->delete();
+
         $response=$product->delete();
+
     }
 //    public function storeProductCustomField(int $productId,Request $request)
 //    {
@@ -120,4 +121,27 @@ public function Products()
     $response=$this->productModel::all();
     return $response;
 }
+public function appearProducts()
+{
+
+    $res=$this->productModel::all()->where('is_appear',1);
+    return $res;
+}
+    public function productsByCategory($category_id)
+    {
+        $product_ids=DB::table('product_categories')->select('product_id')->where('category_id',$category_id)->get();
+        $i=0;
+        foreach ($product_ids as $product_id){
+            $ids[$i]=$product_id->product_id;
+            $i++;
+
+        }
+
+        $res1=$this->productModel::all()->whereIn('id',$ids)->where('is_appear',1);
+        return $res1;
+    }
+    public function productDetails($id){
+        $response=$this->productModel::all()->where('id',$id);
+        return $response;
+    }
 }

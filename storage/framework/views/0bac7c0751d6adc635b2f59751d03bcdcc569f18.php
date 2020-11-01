@@ -198,14 +198,13 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                 </div>
-                <form>
                 <?php if(isset($product)): ?>
                 <?php $__currentLoopData = $pcustoms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pcustom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="form-group sss">
                             <input type="hidden" value="1" name="counter" id="count">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6 py-5">
+                                    <div class="col-md-5 py-5">
                                         <label for="selectBrand">
                                             custom field
                                         </label>
@@ -225,26 +224,19 @@ unset($__errorArgs, $__bag); ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 py-5">
+                                    <div class="col-md-5 py-5">
                                         <label for="selectBrand">
                                             value
                                         </label>
                                         <input type="text" class="form-control" name="value[]" placeholder="Add value" value="<?php echo e(isset($product) ? $pcustom->value : ""); ?>">
                                     </div>
-
-
-
-
-
-
-
-
-                                    <button> delerte</button>
-
+                                    <div class="col-md-2 py-5">
+                                        <span class="btn btn-danger " onclick="openForm()">clear</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                </form>
+
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 <?php else: ?>
@@ -256,7 +248,7 @@ unset($__errorArgs, $__bag); ?>
                                     <label for="selectBrand">
                                         select a custom field
                                     </label>
-                                    <select name="custom_field[{'cf',cf}]" class="form-control" id="selectcustom_fields" >
+                                    <select name="custom_field[]" class="form-control" id="selectcustom_fields" >
                                         <?php $__currentLoopData = $custom_fields; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $custom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if(isset($product) and $product->brand_id == $custom->id ): ?>
                                                 <option value="<?php echo e($custom->id); ?>" selected >
@@ -276,7 +268,7 @@ unset($__errorArgs, $__bag); ?>
                                     <label for="selectBrand">
                                         Add value
                                     </label>
-                                    <input type="text" class="form-control" name="custom_field[{'val',val}]" placeholder="Add value" value="<?php echo e(isset($product) ? $product->meta : ""); ?>">
+                                    <input type="text" class="form-control" name="value[]" placeholder="Add value" value="<?php echo e(isset($product) ? $product->meta : ""); ?>">
 
                                 </div>
                                 <div class="col-md-2 mt-5">
@@ -398,18 +390,27 @@ unset($__errorArgs, $__bag); ?>
                     </button>
                 </div>
             </form>
+                <div class="form-popup" id="myForm">
+                    <form action="<?php echo e(route('product_customfields.destroy',$pcustom->id)); ?>" class="form-container">
+                        <h1>are you sure
+
+                        </h1>
+
+
+                        <button type="submit" class="btn">yes</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">cancel</button>
+                    </form>
+                </div>
         </div>
     </div>
     <script>
         let x=0;
-        var cf;
         function handler() {
             $('.xxx').attr('class','hidden');
             $('.hidden').attr('onclick','');
             var a=document.getElementById('count').value;
             var b = parseInt(a)+1;
             document.getElementById('count').value=b.toString();
-            //cf[{'cf',document.getE}]
             // let b=a.parseInt();
             // alert(b)
             // b=b+1;
@@ -426,7 +427,7 @@ unset($__errorArgs, $__bag); ?>
                     '                                <label for="selectBrand">\n' +
                     '                                    select a custom field\n' +
                     '                                </label>\n' +
-                    '                                <select name="custom_field[{\'val\',val}]" class="form-control" id="selectcustom_fields" >\n' +
+                    '                                <select name="custom_field[]" class="form-control" id="selectcustom_fields" >\n' +
                     '                                    <?php $__currentLoopData = $custom_fields; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $custom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>\n' +
                     '                                        <?php if(isset($product) and $product->brand_id == $custom->id ): ?>\n' +
                     '                                            <option value="<?php echo e($custom->id); ?>" selected >\n' +
@@ -444,7 +445,7 @@ unset($__errorArgs, $__bag); ?>
                     '                                <label for="selectBrand">\n' +
                     '                                    Add value\n' +
                     '                                </label>\n' +
-                    '                                <input type="text" class="form-control" name="custom_field[{\'val\',val}]" placeholder="Add value" value="<?php echo e(isset($product) ? $product->meta : ""); ?>">\n' +
+                    '                                <input type="text" class="form-control" name="value[]" placeholder="Add value" value="<?php echo e(isset($product) ? $product->meta : ""); ?>">\n' +
                     '                               \n' +
                     '                            </div>\n' +
                     '                            <div class="col-md-2 mt-5">\n' +
@@ -530,6 +531,20 @@ unset($__errorArgs, $__bag); ?>
             x=x+1;
             // alert(x);
             // document.getElementById('xxx'+x).setAttribute("class","hidden");
+        }
+    </script>
+    <script>
+        function clearqq(){
+            alert('are you shore')
+        }
+    </script>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
         }
     </script>
 <?php $__env->stopSection(); ?>

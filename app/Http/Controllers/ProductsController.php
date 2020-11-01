@@ -62,20 +62,32 @@ private $response;
      */
     public function show($id)
     {
-        $response= $this->productService->Products();
+        $response= $this->productService->productDetails($id);
         return $response;
     }
     /**
      * Display the specified resource.
      *
      *
+     * @return \Illuminate\Http\Response
+     */
+    public function get_by_category($category_id)
+    {
+        $response= $this->productService->productsByCategory($category_id);
+        return $response;
+    }
+    /**
+     *
+     *
+     * @return \Illuminate\Http\Response
      */
     public function get_all()
 {
 
-        $response= $this->productService->Products();
-        dump($response);
-        die();
+        $res= $this->productService->appearProducts();
+        return $res;
+//        dump($response);
+//        die();
 }
     /**
      * Show the form for editing the specified resource.
