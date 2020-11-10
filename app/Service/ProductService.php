@@ -94,7 +94,7 @@ private $pimage;
     public function update(Request $request, Product $product)
     {
         //dd($request);
-        return $request;
+//        return $request;
 //        $product->title =$request->title;
 //        $product->slug =$request->slug;
 //        $product->brand_id =$request->brand_id;
@@ -103,12 +103,13 @@ private $pimage;
 //        $product->meta =$request->meta;
 //        $product->description =$request->description;
 //        $response= $product->save();
-        for ($i=0;$i<(int)$request->counter;$i++){
-            $product->customfields()->sync([$request->custom_field[$i] => [
-                'value' => $request->value[$i],
-                'description' => "tttt",
-            ]]);
+//        for ($i=0;$i<(int)$request->counter;$i++){
+        $links=[];
+        for($i=0;$i<$request->counter;$i++){
+            $links[$request->custom_field[$i]] = ['value'=>$request->value[$i],'description'=>'ttttt'];
         }
+            $product->customfields()->sync($links);
+//        }
         for ($i=0;$i<(int)$request->ccounter;$i++){
             $product->categories()->sync([$request->category[$i] => [
 

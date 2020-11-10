@@ -63,7 +63,7 @@
       <workItem from="1604301833769" duration="39000" />
       <workItem from="1604304498403" duration="4759000" />
       <workItem from="1604819722790" duration="37502000" />
-      <workItem from="1604995430513" duration="11218000" />
+      <workItem from="1604995430513" duration="21258000" />
     </task>
     <servers />
   </component>
@@ -71,6 +71,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="317" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605008821740">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="317" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605008821740" />
     <state x="420" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603095163132">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -118,5 +122,9 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603092924987" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603402957243" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605010356333">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605010356333" />
   </component>
 </project>
