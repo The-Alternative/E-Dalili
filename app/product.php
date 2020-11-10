@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class product extends Model
 {
 //    use SoftDeletes;
-    public function product_customfields(){
-        return $this->hasMany(product_customfield::class);
+    public function customfields(){
+        return $this->belongsToMany(custom_field::class)->withTimestamps()->withPivot(['value','description']);
     }
-    public function product_categories(){
-        return $this->hasMany(product_category::class);
+    public function categories(){
+        return $this->belongsToMany(category::class)->withTimestamps()->withPivot(['description']);
     }
+
+
     public function product_images(){
         return $this->hasMany(product_image::class);
     }
@@ -26,4 +28,5 @@ class product extends Model
 //        'is_active' => true,
 //        'is_appear' => false,
     ];
+
 }

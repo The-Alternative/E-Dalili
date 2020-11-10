@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class category extends Model
 {
-    public function product_categories(){
-        return $this->hasMany(product_category::class);
+    public function products(){
+        return $this->belongsToMany(product::class)->withTimestamps()->withPivot(['description']);
     }
+
     public function categories(){
         return $this->hasMany(category::class);
     }

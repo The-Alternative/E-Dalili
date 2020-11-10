@@ -8,8 +8,8 @@ use App\custom_field;
 use App\product;
 
 
-use App\product_category;
-use App\product_customfield;
+
+use App\product_image;
 use App\Service\ProductService;
 use Illuminate\Http\Request;
 
@@ -97,7 +97,18 @@ private $response;
      */
     public function edit(Product $product)
     {
-        return view('products.create')->with('product',$product)->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('pcustoms',product_customfield::all()->where('product_id',$product->id))->with('categories',category::all())->with('pcategories',product_category::all()->where('product_id',$product->id));
+//        $categories = category::all();
+//        $categories->map(function ($item){$item->setAttribute('products',$item->products);});
+//        $custom_fields = custom_field::all();
+//        $custom_fields->map(function ($item){$item->setAttribute('products',$item->products);});
+//       return \response()->json($categories);
+        return view('products.edit',[
+            'product' => $product,
+            'brands'  => brand::all(),
+            'custom_fields' => custom_field::all(),
+            'categories' => category::all(),
+            'pimages' => product_image::all()->where('product_id',$product->id)
+        ]);
     }
 
     /**
@@ -147,5 +158,7 @@ private $response;
     {
         return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('categories',category::all());
     }
+
+
 
 }

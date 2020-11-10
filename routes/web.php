@@ -36,3 +36,4 @@ Route::resource('/product_customfields','Product_CustomFieldsController');
 //Route::post('/products/get_all','ProductsController@get_all');
 Route::patch('/products/get_all','ProductsController@get_all');
 Route::get('/trashed_brands', 'BrandsController@trashed')->name('trashed.index');
+Route::delete('categories/{id}', 'Product_CategoriesController@destroy')->name('categories.destroy');

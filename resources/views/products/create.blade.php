@@ -6,7 +6,7 @@
             {{ isset($product) ? "Update Product" : "Add New Product" }}
         </div>
         <div class="card-body">
-            <form action="{{ isset($product) ?  route('products.update', $product->id) : route('products.store')   }}" method="POST">
+            <form action="{{ isset($product) ?  route('products.update', $product->id) : route('products.store')   }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if(isset($product))
                     @method('PUT')
@@ -106,6 +106,72 @@
                     @enderror
                 </div>
                 @if(isset($product))
+                    @foreach($pimages as $pimage)
+                <div class="form-group iii">
+                    <input type="hidden" value="1" name="icounter" id="icount">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 py-5">
+                                <label for="product image">Product image:</label>
+                                <input type="file" name="image[]" class="form-control"  value="{{$pimage->image}}">
+                            </div>
+                            <div class="col-md-4 py-5">
+                                <img src="{{ asset('storage/'.$pimage->image) }}" width="100px" height="50px">
+                            </div>
+                            <div class="col-md-3 py-5">
+                                <label>choice a cover</label>
+                                <div class="form-check" >
+                                    @if($pimage->is_cover)
+                                    <input class="form-check-input" type="radio" name="iscover" id="coverRadio1" value="1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Is Cover
+                                    </label>
+                                    @else
+                                        <input class="form-check-input" type="radio" name="iscover" id="coverRadio1" value="1" >
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Is Cover
+                                        </label>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-2 py-5">
+                                <label>remove image</label>
+                                <span class="btn btn-danger ciii" onclick="ihandler()" >
+                                    <i class="fa fa-trash" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    @endforeach
+                @else
+                    <div class="form-group iii">
+                        <input type="hidden" value="1" name="icounter" id="icount">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 py-5">
+                                    <label for="product image">Product image:</label>
+                                    <input type="file" name="image[]" class="form-control" placeholder="Add product image" >
+                                </div>
+                                <div class="col-md-5 py-5">
+                                    <label>choice a cover</label>
+                                    <div class="form-check" >
+                                        <input class="form-check-input" type="radio" name="iscover" id="coverRadio1" value="1" >
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Is Cover
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 py-5">
+                                    <label>Add image</label>
+                                    <span class="btn btn-success ciii" onclick="ihandler()" >
+                                    <i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if(isset($product))
                 @foreach($pcustoms as $pcustom)
                         <div class="form-group sss">
                             <input type="hidden" value="1" name="counter" id="count">
@@ -136,7 +202,8 @@
                                         <input type="text" class="form-control" name="value[]" placeholder="Add value" value="{{ isset($product) ? $pcustom->value : "" }}">
                                     </div>
                                     <div class="col-md-2 py-5">
-                                        <span class="btn btn-danger " onclick="openForm()">clear</span>
+                                        <span class="btn btn-danger" data-id="{{$pcustom->id}}" onclick="openForm()">clear</span>
+                                        <input type="hidden" class="select" value="{{$pcustom->id}}">
                                     </div>
                                 </div>
                             </div>
@@ -282,25 +349,89 @@
                         </div>
                     </div>
                 @endif
+{{--                @if(isset($product))--}}
+{{--                    <div class="form-group">--}}
+{{--                        <div class="container">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-4 py-5">--}}
+{{--                                    <label>Add image</label>--}}
+{{--                                    <span class="btn btn-success ciii" onclick="ihandler()" >--}}
+{{--                                    <i class="fa fa-plus" aria-hidden="true"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-4 py-5">--}}
+{{--                                    <label>Add Custom field</label>--}}
+{{--                                    <span class="btn btn-success xxx" onclick="handler()" >--}}
+{{--                                    <i class="fa fa-plus" aria-hidden="true"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-4 py-5">--}}
+{{--                                    <label>Add category</label>--}}
+{{--                                    <span class="btn btn-success cxxx" onclick="chandler()" >--}}
+{{--                                    <i class="fa fa-plus" aria-hidden="true"></i></span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
                 <div class="form-group">
                     <button class="btn btn-success" style="margin-top: 10px">
                         {{ isset($product) ? "Update" : "Add" }}
                     </button>
                 </div>
             </form>
-                <div class="form-popup" id="myForm">
-                    <form action="{{route('product_customfields.destroy',$pcustom->id)}}" class="form-container">
-                        <h1>are you sure
+{{--                <div class="form-popup" id="myForm">--}}
+{{--                    <form action="{{route('product_customfields.destroy',$pcustom->id)}}" class="form-container">--}}
+{{--                        <h1>are you sure--}}
 {{--                            {{$del[1]}}--}}
-                        </h1>
+{{--                        </h1>--}}
 
 
-                        <button type="submit" class="btn">yes</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">cancel</button>
-                    </form>
-                </div>
+{{--                        <button type="submit" class="btn">yes</button>--}}
+{{--                        <button type="button" class="btn cancel" onclick="closeForm()">cancel</button>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
         </div>
     </div>
+    <script>
+        function ihandler() {
+            $('.ciii').attr('class', 'hidden');
+            $('.hidden').attr('onclick', '');
+            var ai = document.getElementById('icount').value;
+            var bi = parseInt(ai) + 1;
+            document.getElementById('icount').value = bi.toString();
+            // alert(bi);
+            var g=document.getElementById('coverRadio'+(bi-1)).value;
+            // alert(g);
+            var t=parseInt(g) + 1;
+            // alert(t);
+            $('.iii').append(function () {
+                return $('<div class="form-group">\n' +
+                    '                    <div class="container">\n' +
+                    '                        <div class="row">\n' +
+                    '                            <div class="col-md-5 py-5">\n' +
+                    '                                <label for="product image">Product image:</label>\n' +
+                    '                                <input type="file" name="image[]" class="form-control" placeholder="Add product image" >\n' +
+                    '                            </div>\n' +
+                    '                            <div class="col-md-5 py-5">\n' +
+                    '                                <label>choice a cover</label>\n' +
+                    '                                <div class="form-check" >\n' +
+                    '                                    <input class="form-check-input" type="radio" name="iscover" id="coverRadio'+t+'" value="'+t+'" >\n' +
+                    '                                    <label class="form-check-label" for="exampleRadios1">\n' +
+                    '                                        Is Cover\n' +
+                    '                                    </label>\n' +
+                    '                                </div>\n' +
+                    '                            </div>\n' +
+                    '                            <div class="col-md-2 py-5">\n' +
+                    '                                <label>Add image</label>\n' +
+                    '                                <span class="btn btn-success ciii" onclick="ihandler()" >\n' +
+                    '                                    <i class="fa fa-plus" aria-hidden="true"></i></span>\n' +
+                    '                            </div>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </div>');
+            });
+
+        }
+    </script>
     <script>
         let x=0;
         function handler() {
@@ -309,13 +440,6 @@
             var a=document.getElementById('count').value;
             var b = parseInt(a)+1;
             document.getElementById('count').value=b.toString();
-            // let b=a.parseInt();
-            // alert(b)
-            // b=b+1;
-            // a=toString(b);
-            // alert(a)
-
-            // alert(document.getElementById('xxx').className)
 
             $('.sss').append(function() {
                 return $('<div class="form-group">\n' +
@@ -368,6 +492,7 @@
 
 
     </script>
+
     <script>
         let y=0;
         function chandler() {
@@ -436,8 +561,14 @@
             alert('are you shore')
         }
     </script>
+
     <script>
         function openForm() {
+            var el = this;
+
+            // Delete id
+            var deleteid = $(this).data('id');
+            alert(deleteid);
             document.getElementById("myForm").style.display = "block";
         }
 
