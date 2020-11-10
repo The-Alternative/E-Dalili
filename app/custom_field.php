@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class custom_field extends Model
 {
-    public function product_customfields(){
-        return $this->hasMany(product_customfield::class);
+    public function products(){
+        return $this->belongsToMany(product::class)->withTimestamps()->withPivot(['value','description']);
     }
 }

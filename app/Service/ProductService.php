@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\product;
 use App\product_category;
 use App\product_customfield;
+use App\product_image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\This;
@@ -14,20 +15,18 @@ use phpDocumentor\Reflection\Types\This;
 class ProductService
 {
 private $productModel;
-private $customField;
 private $custom;
-    private $pcategory;
+private $pimage;
     private $category;
     /**
      * ProductService constructor.
      */
-    public function __construct(product $product,product_customfield $customField,custom_field  $custom,category $category,product_category $pcategory)
+    public function __construct(product $product,custom_field  $custom,category $category,product_image $pimage)
     {
         $this->productModel=$product;
-        $this->customField=$customField;
         $this->custom=$custom;
         $this->category=$category;
-        $this->pcategory=$pcategory;
+        $this->pimage=$pimage;
     }
 
     public function store(Request $request)
@@ -55,20 +54,36 @@ private $custom;
             'is_appear' => $is_appear,
             'description' => $request->description,
         ]);
-        for ($i = 0;$i< (int)$request->counter;$i++) {
-            $this->customField::create([
-                'product_id' => $response->id,
-                'custom_field_id' => $request->custom_field[$i],
+        for ($i=0;$i<(int)$request->counter;$i++){
+            $response->customfields()->attach($request->custom_field[$i],[
                 'value' => $request->value[$i],
-                'description' => 'assesses'
+                'description' => "sssssss",
             ]);
         }
-        for ($i = 0;$i< (int)$request->ccounter;$i++) {
-            $this->pcategory::create([
-                'product_id' => $response->id,
-                'category_id' => $request->category[$i],
-                'description' => $request->cdescription[$i],
-            ]);
+        for ($i=0;$i<(int)$request->ccounter;$i++){
+            $response->categories()->attach($request->category[$i],['description'=>$request->cdescription[$i]]);
+        }
+
+
+
+        for ($i = 0;$i< (int)$request->icounter;$i++){
+            $e =$i + 1;
+            if ( (int)$request->iscover == $e ){
+                $xx[$i]=true;
+            }else{
+                $xx[$i]=false;
+            }
+        }
+        for ($i = 0;$i< (int)$request->icounter;$i++) {
+
+                $this->pimage::create([
+                    'product_id' => $response->id,
+                    'image'      =>$request->image[$i]->store('images','public'),
+                    'is_cover'   =>$xx[$i]
+                ]);
+
+
+
         }
 
         session()->flash('success','product created successfuly');
@@ -78,6 +93,8 @@ private $custom;
     }
     public function update(Request $request, Product $product)
     {
+        //dd($request);
+        return $request;
 //        $product->title =$request->title;
 //        $product->slug =$request->slug;
 //        $product->brand_id =$request->brand_id;
@@ -86,6 +103,18 @@ private $custom;
 //        $product->meta =$request->meta;
 //        $product->description =$request->description;
 //        $response= $product->save();
+        for ($i=0;$i<(int)$request->counter;$i++){
+            $product->customfields()->sync([$request->custom_field[$i] => [
+                'value' => $request->value[$i],
+                'description' => "tttt",
+            ]]);
+        }
+        for ($i=0;$i<(int)$request->ccounter;$i++){
+            $product->categories()->sync([$request->category[$i] => [
+
+                'description' => $request->cdescription[$i],
+            ]]);
+        }
         $response=$product->update([
             'title' => $request->title,
             'slug' => $request->slug,
@@ -101,15 +130,12 @@ private $custom;
             return "faild";
         }
 //        return $response;
+//        return $request->image[2]->store('images','public');
 
 
     }
     public function delete(Product $product){
-        $res=DB::table('product_customfields')->where('product_id',$product->id)->delete();
-        $res1=DB::table('product_categories')->where('product_id',$product->id)->delete();
-
         $response=$product->delete();
-
     }
 //    public function storeProductCustomField(int $productId,Request $request)
 //    {
@@ -129,7 +155,8 @@ public function appearProducts()
 }
     public function productsByCategory($category_id)
     {
-        $product_ids=DB::table('product_categories')->select('product_id')->where('category_id',$category_id)->get();
+      //  $product_ids=DB::table('product_categories')->select('product_id')->where('category_id',$category_id)->get();
+        $product_ids= $this->pcategory->ById($category_id);
         $i=0;
         foreach ($product_ids as $product_id){
             $ids[$i]=$product_id->product_id;
@@ -144,4 +171,5 @@ public function appearProducts()
         $response=$this->productModel::all()->where('id',$id);
         return $response;
     }
+
 }
