@@ -116,7 +116,44 @@ class StoreService
     }
 
     public function storeDetailes($id){
-        return $this->storeModel::all()->when('id',$id);
+        return $this->storeModel::all()->where('id',$id);
+    }
+
+    public function comparePrices(product $product){
+        $stores = $this->product->where('id',$product->id)->first()->stores()->get();
+            foreach ($stores as $store){
+                $x[]=$store->pivot->price;
+             }
+        $y=999999999999999999999999999999999999;
+        $e=0;
+        foreach ($x as $t){
+            if ($t<$y){
+                $y=$t;
+            }
+            if ($t>$e){
+                $e=$t;
+            }
+        }
+
+        $min = $y;
+        $max = $e;
+        return 'min='.$min.'and max='.$max;
+    }
+
+    public function index(){
+        return view('stores.index')->with('stores',Store::all());
+    }
+
+    public function create(){
+        return view('stores.create')->with('users',User::all());
+    }
+
+    public function edit($store){
+        return view(stores.edit,[
+            'store'      => $store,
+            'users'      =>User::all(),
+            'products'   =>product::all()
+        ]);
     }
 //    public function deleteProductsfromStore(Request $request,Store $store){
 //

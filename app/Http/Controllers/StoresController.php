@@ -23,21 +23,21 @@ class StoresController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function index()
     {
-        return view('stores.index')->with('stores',Store::all());
+        return $this->storeService->index();
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function create()
     {
-        return view('stores.create')->with('users',User::all());
+        return $this->storeService->create();
 
     }
 
@@ -49,34 +49,30 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        $this->response= $this->storeService->createStore($request);
+        return $this->storeService->createStore($request);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Store[]|\Illuminate\Database\Eloquent\Collection|Response
      */
     public function show($id)
     {
-        $response = $this->storeService->storeDetails($id);
-        return $response;
+        return $this->storeService->storeDetailes($id);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function edit(Store $store)
     {
-        return view(stores.edit,[
-           'store'      => $store,
-           'users'      =>User::all(),
-           'products'   =>product::all()
-        ]);
+       return $this->storeService->edit($store);
     }
 
     /**
@@ -84,24 +80,23 @@ class StoresController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function update(Request $request,Store $store)
     {
-        $response = $this->storeService->update($request,$store);
-        return $response;
+        return $this->storeService->update($request,$store);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response|void
      */
     public function destroy(Store $store)
     {
-        $response = $this->storeService->deleteStore($store);
-        return $response;
+        return $this->storeService->deleteStore($store);
+
     }
 
     /**
@@ -112,8 +107,8 @@ class StoresController extends Controller
      */
     public function addProducts(Request $request,Store $store)
     {
-        $response = $this->storeService->addProductsToStore($request,$store);
-        return $response;
+        return $this->storeService->addProductsToStore($request,$store);
+
     }
 
     /**
@@ -124,8 +119,8 @@ class StoresController extends Controller
      */
     public function updateProducts(Request $request,Store $store)
     {
-        $response = $this->storeService->updateProducts($request,$store);
-        return $response;
+        return $this->storeService->updateProducts($request,$store);
+
     }
 
     /**
@@ -136,8 +131,8 @@ class StoresController extends Controller
      */
     public function getAllStores()
     {
-        $response = $this->storeService->stores();
-        return $response;
+        return $this->storeService->stores();
+
     }
 
     /**
@@ -148,8 +143,8 @@ class StoresController extends Controller
      */
     public function getAproovedStores()
     {
-        $response = $this->storeService->approvedStores();
-        return $response;
+        return $this->storeService->approvedStores();
+
     }
 
     /**
@@ -160,8 +155,14 @@ class StoresController extends Controller
      */
     public function getActiveStores()
     {
-        $response = $this->storeService->activeStores();
-        return $response;
+        return $this->storeService->activeStores();
+
+    }
+
+    public function comparePrices($product)
+    {
+        return $this->storeService->comparePrices($product);
+
     }
 
 

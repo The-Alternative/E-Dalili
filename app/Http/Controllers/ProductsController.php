@@ -39,19 +39,7 @@ private $response;
      */
     public function store(Request $request)
     {
-
-       $request['brand_id']=(int)$request['brand_id'];
-
-//        $request->validate([
-//            "title" => "required:products",
-//            "slug" => "required:products",
-//            "barcode" => "required:products",
-//            "productcol" => "required:products",
-//            "meta" => "required:products",
-//            "description" => "required:products",
-//        ]);
-       $this->response= $this->productService->store($request);
-        return  $this->response;
+       return $this->productService->store($request);
     }
 
     /**
@@ -62,8 +50,7 @@ private $response;
      */
     public function show($id)
     {
-        $response= $this->productService->productDetails($id);
-        return $response;
+        return $this->productService->productDetails($id);
     }
     /**
      * Display the specified resource.
@@ -73,8 +60,8 @@ private $response;
      */
     public function get_by_category($category_id)
     {
-        $response= $this->productService->productsByCategory($category_id);
-        return $response;
+        return $this->productService->productsByCategory($category_id);
+
     }
     /**
      *
@@ -82,13 +69,9 @@ private $response;
      * @return \Illuminate\Http\Response
      */
     public function get_all()
-{
-
-        $res= $this->productService->appearProducts();
-        return $res;
-//        dump($response);
-//        die();
-}
+    {
+     return $this->productService->appearProducts();
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -97,18 +80,7 @@ private $response;
      */
     public function edit(Product $product)
     {
-//        $categories = category::all();
-//        $categories->map(function ($item){$item->setAttribute('products',$item->products);});
-//        $custom_fields = custom_field::all();
-//        $custom_fields->map(function ($item){$item->setAttribute('products',$item->products);});
-//       return \response()->json($categories);
-        return view('products.edit',[
-            'product' => $product,
-            'brands'  => brand::all(),
-            'custom_fields' => custom_field::all(),
-            'categories' => category::all(),
-            'pimages' => product_image::all()->where('product_id',$product->id)
-        ]);
+        return $this->productService->edit($product);
     }
 
     /**
@@ -120,10 +92,7 @@ private $response;
      */
     public function update(Request $request, Product $product)
     {
-        $request['brand_id']=(int)$request['brand_id'];
-        $product->brand_id=(int)$request['brand_id'];
-        $this->response= $this->productService->update($request,$product);
-        return  $this->response;
+        return $this->productService->update($request,$product);
     }
 
     /**
@@ -134,9 +103,8 @@ private $response;
      */
     public function destroy(Product $product)
     {
-        $this->response= $this->productService->delete($product);
-        session()->flash('success','product deleted successfuly');
-        return redirect(route('products.index'));
+        return $this->productService->delete($product);
+
 
     }
     /**
@@ -146,7 +114,7 @@ private $response;
      */
     public function index()
     {
-        return view('products.index')->with('products',product::all());
+        return $this->productService->index();
     }
 
     /**
@@ -156,7 +124,7 @@ private $response;
      */
     public function create()
     {
-        return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('categories',category::all());
+        return $this->productService->create();
     }
 
 

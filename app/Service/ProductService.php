@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 
+use App\brand;
 use App\category;
 use App\custom_field;
 use App\Http\Requests\ProductRequest;
@@ -31,6 +32,15 @@ private $pimage;
 
     public function store(Request $request)
     {
+        $request['brand_id']=(int)$request['brand_id'];
+                $request->validate([
+            "title" => "required:products",
+            "slug" => "required:products",
+            "barcode" => "required:products",
+            "productcol" => "required:products",
+            "meta" => "required:products",
+            "description" => "required:products",
+        ]);
         if ($request->is_active){
             $is_active=true;
         }else{
@@ -94,6 +104,8 @@ private $pimage;
     public function update(Request $request, Product $product)
     {
 //        return $request->image[2]->store();
+        $request['brand_id']=(int)$request['brand_id'];
+        $product->brand_id=(int)$request['brand_id'];
         $links=[];
         for($i=0;$i<$request->counter;$i++){
             $links[$request->custom_field[$i]] = ['value'=>$request->value[$i],'description'=>'ttttt'];
@@ -156,10 +168,31 @@ private $pimage;
         }
     }
 
+    public function index(){
+        return view('products.index')->with('products',product::all());
+    }
+
+    public function create(){
+        return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('categories',category::all());
+
+    }
+
+    public function edit($product){
+        return view('products.edit',[
+            'product' => $product,
+            'brands'  => brand::all(),
+            'custom_fields' => custom_field::all(),
+            'categories' => category::all(),
+            'pimages' => product_image::all()->where('product_id',$product->id)
+        ]);
+    }
+
     public function delete(Product $product){
+        session()->flash('success','product deleted successfuly');
         $response=$product->update([
             'is_appear' => false
         ]);
+        return redirect(route('products.index'));
     }
 //    public function storeProductCustomField(int $productId,Request $request)
 //    {
