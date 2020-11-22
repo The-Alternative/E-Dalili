@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class category extends Model
 {
+    protected $fillable = ['name','slug','parent_id','image','is_active'];
+
     public function products(){
         return $this->belongsToMany(product::class)->withTimestamps()->withPivot(['description']);
     }

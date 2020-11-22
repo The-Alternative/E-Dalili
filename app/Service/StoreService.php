@@ -141,7 +141,7 @@ class StoreService
     }
 
     public function index(){
-        return view('stores.index')->with('stores',Store::all());
+        return view('stores.index')->with('stores',Store::all()->where('is_active',true));
     }
 
     public function create(){

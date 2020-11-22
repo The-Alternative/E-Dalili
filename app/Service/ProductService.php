@@ -169,11 +169,11 @@ private $pimage;
     }
 
     public function index(){
-        return view('products.index')->with('products',product::all());
+        return view('products.index')->with('products',product::all()->where('is_active',true));
     }
 
     public function create(){
-        return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('categories',category::all());
+        return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all()->where('is_active',true))->with('categories',category::all()->where('is_active',true));
 
     }
 

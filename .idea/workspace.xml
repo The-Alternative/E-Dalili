@@ -20,18 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc7735c0-2512-4d4e-a57a-b47ed27635aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Service/BrandService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoresController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Custom_FieldsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Custom_FieldsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Service/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/ProductService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Service/StoreService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/StoreService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Store.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Store.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/83afb367feec6ffb3ea8b1e1d2c66b6e0e20b12c.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/83afb367feec6ffb3ea8b1e1d2c66b6e0e20b12c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/custom_field.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/custom_field.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_18_111533_create_custom_fields_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_18_111533_create_custom_fields_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_18_111623_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_18_111623_create_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +45,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iDhjPGYkXHvUfOklqEtabSaCgf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -109,7 +108,8 @@
       <workItem from="1605704423839" duration="752000" />
       <workItem from="1605705220988" duration="9000" />
       <workItem from="1605705951779" duration="710000" />
-      <workItem from="1605774349748" duration="8630000" />
+      <workItem from="1605774349748" duration="9225000" />
+      <workItem from="1606028468691" duration="5406000" />
     </task>
     <servers />
   </component>
@@ -145,11 +145,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605704147254" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605787567646">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606031178633">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1603192214607" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605787567646" />
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1606031178633" />
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1605351065197" />
     <state x="460" y="276" key="ComposerInitDialogKey" timestamp="1605705040525">
       <screen x="0" y="0" width="1366" height="728" />
@@ -175,11 +175,11 @@
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603093264454" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603403312082" />
-    <state x="445" y="86" key="NewPhpClassDialog" timestamp="1605700204675">
+    <state x="445" y="86" key="NewPhpClassDialog" timestamp="1606030556383">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="1811" y="86" key="NewPhpClassDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1603190845439" />
-    <state x="445" y="86" key="NewPhpClassDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605700204675" />
+    <state x="445" y="86" key="NewPhpClassDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1606030556383" />
     <state x="445" y="86" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1605349462861" />
     <state x="518" y="287" key="NewPhpFileDialog" timestamp="1605349400858">
       <screen x="0" y="0" width="1366" height="728" />
