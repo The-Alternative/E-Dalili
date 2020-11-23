@@ -106,9 +106,11 @@
                         </div>
                         @enderror
                     </div>
+                    <?php $ii=0; ?>
                         @foreach($pimages as $pimage)
-                            <div class="form-group iii">
-                                <input type="hidden" value="1" name="icounter" id="icount">
+                            <?php $ii=$ii+1; ?>
+                            <div class="form-group">
+
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-3 py-5">
@@ -136,7 +138,7 @@
                                         </div>
                                         <div class="col-md-2 py-5">
                                             <label>remove image</label>
-                                            <span class="btn btn-danger ciii" onclick="ihandler()" >
+                                            <span class="btn btn-danger eee" onclick="" >
                                     <i class="fa fa-trash" aria-hidden="true"></i></span>
                                         </div>
                                     </div>
@@ -149,8 +151,8 @@ $yy=0;?>
                         @foreach($custom1->products as $product2)
                             @if($product->id == $product2->pivot->product_id)
                                 <?php $xx=$xx+1;?>
-                                <div class="form-group csss">
-                                    <input type="hidden" value="{{ $xx }}" name="counter" id="count">
+                                <div class="form-group ">
+
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-5 py-5">
@@ -182,7 +184,7 @@ $yy=0;?>
                                                 <label for="selectBrand">
                                                     clear
                                                 </label>
-                                                <span class="btn btn-danger"  >
+                                                <span class="btn btn-danger qqq"  >
                                                                                                                 delete
                                                                                                             </span>
                                             </div>
@@ -197,8 +199,8 @@ $yy=0;?>
                                 @foreach($category1->products as $product1)
                                     @if($product->id == $product1->pivot->product_id)
                                         <?php $yy=$yy+1 ?>
-                            <div class="form-group csss">
-                                <input type="hidden" value="{{ $yy }}" name="ccounter" id="ccount">
+                            <div class="form-group">
+
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-5 py-5">
@@ -230,7 +232,7 @@ $yy=0;?>
                                                                                                                     <label for="selectBrand">
                                                                                                                         clear
                                                                                                                     </label>
-                                                                                                                    <span class="btn btn-danger"  >
+                                                                                                                    <span class="btn btn-danger www" onclick="xxxx()"  >
                                                                                                                 clear
                                                                                                             </span>
                                                                                                                 </div>
@@ -266,6 +268,31 @@ $yy=0;?>
                     {{--                        </div>--}}
                     {{--                    </div>--}}
                     {{--                @endif--}}
+                    <div class="iii"> <input type="hidden" value="{{ $ii }}" name="icounter" id="icount"></div>
+                    <div class="sss"><input type="hidden" value="{{ $xx }}" name="counter" id="count"></div>
+                    <div class="csss"><input type="hidden" value="{{ $yy }}" name="ccounter" id="ccount"></div>
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Add image</label>
+                                    <span class="btn btn-success " onclick="ihandler()" >
+                                    <i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Add custom field</label>
+                                    <span class="btn btn-success " onclick="handler()" >
+                                    <i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Add category</label>
+                                    <span class="btn btn-success " onclick="chandler()" >
+                                    <i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <button class="btn btn-success" style="margin-top: 10px">
                             Update
@@ -308,11 +335,11 @@ $yy=0;?>
                 return $('<div class="form-group">\n' +
                     '                    <div class="container">\n' +
                     '                        <div class="row">\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label for="product image">Product image:</label>\n' +
                     '                                <input type="file" name="image[]" class="form-control" placeholder="Add product image" >\n' +
                     '                            </div>\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label>choice a cover</label>\n' +
                     '                                <div class="form-check" >\n' +
                     '                                    <input class="form-check-input" type="radio" name="iscover" id="coverRadio'+t+'" value="'+t+'" >\n' +
@@ -320,11 +347,6 @@ $yy=0;?>
                     '                                        Is Cover\n' +
                     '                                    </label>\n' +
                     '                                </div>\n' +
-                    '                            </div>\n' +
-                    '                            <div class="col-md-2 py-5">\n' +
-                    '                                <label>Add image</label>\n' +
-                    '                                <span class="btn btn-success ciii" onclick="ihandler()" >\n' +
-                    '                                    <i class="fa fa-plus" aria-hidden="true"></i></span>\n' +
                     '                            </div>\n' +
                     '                        </div>\n' +
                     '                    </div>\n' +
@@ -346,7 +368,7 @@ $yy=0;?>
                 return $('<div class="form-group">\n' +
                     '                    <div class="container">\n' +
                     '                        <div class="row">\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label for="selectBrand">\n' +
                     '                                    select a custom field\n' +
                     '                                </label>\n' +
@@ -364,20 +386,12 @@ $yy=0;?>
                     '                                    @endforeach\n' +
                     '                                </select>\n' +
                     '                            </div>\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label for="selectBrand">\n' +
                     '                                    Add value\n' +
                     '                                </label>\n' +
-                    '                                <input type="text" class="form-control" name="value[]" placeholder="Add value" value="{{ isset($product) ? $product->meta : "" }}">\n' +
+                    '                                <input type="text" class="form-control" name="value[]" placeholder="Add value" value="">\n' +
                     '                               \n' +
-                    '                            </div>\n' +
-                    '                            <div class="col-md-2 mt-5">\n' +
-                    '                                <label for="selectBrand">\n' +
-                    '                                    Add value\n' +
-                    '                                </label>\n' +
-                    '                                <span class="btn btn-success xxx" onclick="handler()" >\n' +
-                    '                                    Add\n' +
-                    '                                </span>\n' +
                     '                            </div>\n' +
                     '\n' +
                     '                        </div>\n' +
@@ -392,6 +406,32 @@ $yy=0;?>
 
 
 
+    </script>
+    <script>
+        $('.www').click(function(){
+            $(this).closest('.www').parent().parent().parent().parent().remove();
+            var o=document.getElementById('ccount').value;
+            var p = parseInt(o)-1;
+            document.getElementById('ccount').value=p.toString();
+        });
+    </script>
+    <script>
+        $('.qqq').click(function(){
+            $(this).closest('.qqq').parent().parent().parent().parent().remove();
+            var o=document.getElementById('count').value;
+            var p = parseInt(o)-1;
+            document.getElementById('count').value=p.toString();
+        });
+    </script>
+    <script>
+        $('.eee').click(function(){
+            $(this).closest('.eee').parent().parent().parent().parent().remove();
+            var l=document.getElementById('icount').value;
+            var k = parseInt(l)-1;
+            alert(l);
+            alert(k);
+            document.getElementById('icount').value=k.toString();
+        });
     </script>
 
     <script>
@@ -414,7 +454,7 @@ $yy=0;?>
                 return $('<div class="form-group">\n' +
                     '                    <div class="container">\n' +
                     '                        <div class="row">\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label for="selectBrand">\n' +
                     '                                    select a category\n' +
                     '                                </label>\n' +
@@ -432,20 +472,12 @@ $yy=0;?>
                     '                                    @endforeach\n' +
                     '                                </select>\n' +
                     '                            </div>\n' +
-                    '                            <div class="col-md-5 py-5">\n' +
+                    '                            <div class="col-md-6 py-5">\n' +
                     '                                <label for="selectBrand">\n' +
                     '                                    Add Description\n' +
                     '                                </label>\n' +
-                    '                                <input type="text" class="form-control" name="cdescription[]" placeholder="Add Description" value="{{ isset($product) ? $product->meta : "" }}">\n' +
+                    '                                <input type="text" class="form-control" name="cdescription[]" placeholder="Add Description" value="">\n' +
                     '                               \n' +
-                    '                            </div>\n' +
-                    '                            <div class="col-md-2 mt-5">\n' +
-                    '                                <label for="selectBrand">\n' +
-                    '                                    Add Description\n' +
-                    '                                </label>\n' +
-                    '                                <span class="btn btn-success cxxx" onclick="chandler()" >\n' +
-                    '                                    Add\n' +
-                    '                                </span>\n' +
                     '                            </div>\n' +
                     '\n' +
                     '                        </div>\n' +

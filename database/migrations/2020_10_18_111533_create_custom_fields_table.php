@@ -16,6 +16,8 @@ class CreateCustomFieldsTable extends Migration
         Schema::create('custom_fields', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->boolean('is_active');
+            $table->string('image');
             $table->string('description');
             $table->timestamps();
         });

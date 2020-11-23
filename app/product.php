@@ -15,6 +15,9 @@ class product extends Model
         return $this->belongsToMany(category::class)->withTimestamps()->withPivot(['description']);
     }
 
+    public function stores(){
+        return $this->belongsToMany(store::class)->withTimestamps()->withPivot(['is_active','is_approve','price','qty']);
+    }
 
     public function product_images(){
         return $this->hasMany(product_image::class);

@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Service\BrandService;
 
 class BrandsController extends Controller
 {
+
+    private $BrandService;
+    private $response;
+
+    public function __construct(BrandService $brandService)
+    {
+        $this->BrandService=$brandService;
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,8 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        return view('brands.index')->with('brands',brand::all());
+       $this->response= $this->BrandService->index();
+       return $this->response;
     }
 
     /**
@@ -25,7 +36,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view('brands.create');
+        return $this->BrandService->create();
     }
 
     /**
@@ -36,20 +47,8 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-           "name" => "required|unique:brands",
-           "slug" => "required:brands",
-           "description" => "required:brands"
-        ]);
-        brand::create([
-            'name'        => $request->name,
-            'slug'        => $request->slug,
-            'description' => $request->description,
-            'image'       => $request->image->store('images','public')
-        ]);
+        return $this->BrandService->store($request);
 
-        session()->flash('success','brand created successfuly');
-        return redirect(route('brands.index'));
     }
 
     /**
@@ -60,7 +59,7 @@ class BrandsController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->BrandService->show($id);
     }
 
     /**
@@ -71,7 +70,7 @@ class BrandsController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('brands.create')->with('brand',$brand);
+        return $this->BrandService->edit($brand);
     }
 
     /**
@@ -81,9 +80,9 @@ class BrandsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, brand $brand)
     {
-        //
+        return $this->BrandService->update($request,$brand);
     }
 
     /**
@@ -94,23 +93,12 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        $brand = brand::withTrashed()->where('id',$id)->first();
-        if ($brand->trashed()){
-            Storage::disk('public')->delete($brand->image);
-            $brand->forceDelete();
-            session()->flash('success','brand Deleted successfuly');
-            return redirect(route('trashed.index'));
-        }else {
-            $brand->delete();
-            session()->flash('success','brand Trashed successfuly');
-            return redirect(route('brands.index'));
-        }
+        return $this->BrandService->destroy($id);
 //        $brand->delete();
 
     }
 
     public function trashed() {
-        $trashed = Brand::onlyTrashed()->get();
-        return view('brands.index')->withBrands($trashed);
+        return $this->BrandService->trash();
     }
 }

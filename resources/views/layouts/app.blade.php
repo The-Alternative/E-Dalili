@@ -152,12 +152,12 @@
                             <li class="list-group-item">
                                 <a href="{{ route('languages.index') }}">language</a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('product_categories.index') }}">product_categry</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('product_customfields.index') }}">product_custom_field</a>
-                            </li>
+{{--                            <li class="list-group-item">--}}
+{{--                                <a href="{{ route('product_categories.index') }}">product_categry</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="list-group-item">--}}
+{{--                                <a href="{{ route('product_customfields.index') }}">product_custom_field</a>--}}
+{{--                            </li>--}}
                             <li class="list-group-item">
                                 <a href="{{ route('trashed.index') }}">trashed brands</a>
                             </li>
