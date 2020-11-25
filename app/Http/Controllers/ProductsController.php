@@ -97,7 +97,15 @@ private $response;
      */
     public function edit(Product $product)
     {
-        return view('products.create')->with('product',$product)->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('pcustoms',product_customfield::all()->where('product_id',$product->id))->with('categories',category::all())->with('pcategories',product_category::all()->where('product_id',$product->id));
+        return view('products.create')
+        ->with('product',$product)
+        ->with('brands',brand::all())
+        ->with('custom_fields',custom_field::all())
+        ->with('pcustoms',product_customfield::all()
+        ->where('product_id',$product->id))
+        ->with('categories',category::all())
+        ->with('pcategories',product_category::all()
+        ->where('product_id',$product->id));
     }
 
     /**
@@ -145,7 +153,10 @@ private $response;
      */
     public function create()
     {
-        return view('products.create')->with('brands',brand::all())->with('custom_fields',custom_field::all())->with('categories',category::all());
+        return view('products.create')
+        ->with('brands',brand::all())
+        ->with('custom_fields',custom_field::all())
+        ->with('categories',category::all());
     }
 
 }

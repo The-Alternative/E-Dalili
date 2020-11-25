@@ -133,6 +133,29 @@
                 <div class="row">
                     <div class="col-md-4 py-4">
                         <ul class="list-group">
+                        <li class="list-group-item">
+                                <a href="{{ route('employee.index') }}">employee</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('customer.index') }}">customer</a>                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('customer_type.index') }}">customer type</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('role.index') }}">Role</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('permission.index') }}">permission</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('bunch.index') }}">bunch</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('bunch_details.index') }}">bunch details</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('social_media.index') }}">social media</a>
+                            </li>
                             <li class="list-group-item">
                                 <a href="{{ route('categories.index') }}">category</a>
                             </li>
