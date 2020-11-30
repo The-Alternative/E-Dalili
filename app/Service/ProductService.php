@@ -34,12 +34,12 @@ private $pimage;
     {
         $request['brand_id']=(int)$request['brand_id'];
                 $request->validate([
-            "title" => "required:products",
-            "slug" => "required:products",
-            "barcode" => "required:products",
-            "productcol" => "required:products",
-            "meta" => "required:products",
-            "description" => "required:products",
+            "title"          => "required:products",
+            "slug"           => "required:products",
+            "barcode"        => "required:products",
+            "productcol"     => "required:products",
+            "meta"           => "required:products",
+            "description"    => "required:products",
         ]);
         if ($request->is_active){
             $is_active=true;
@@ -54,15 +54,15 @@ private $pimage;
 
         //var_dump($request);
         $response=$this->productModel::create([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'brand_id' => $request->brand_id,
-            'barcode' => $request->barcode,
-            'productcol' => $request->productcol,
-            'meta' => $request->meta,
-            'is_active' => $is_active,
-            'is_appear' => $is_appear,
-            'description' => $request->description,
+            'title'         => $request->title,
+            'slug'          => $request->slug,
+            'brand_id'      => $request->brand_id,
+            'barcode'       => $request->barcode,
+            'productcol'    => $request->productcol,
+            'meta'          => $request->meta,
+            'is_active'     => $is_active,
+            'is_appear'     => $is_appear,
+            'description'   => $request->description,
         ]);
         for ($i=0;$i<(int)$request->counter;$i++){
             $response->customfields()->attach($request->custom_field[$i],[
@@ -151,15 +151,15 @@ private $pimage;
             $is_appear=false;
         }
         $response=$product->update([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'brand_id' => $request->brand_id,
-            'barcode' => $request->barcode,
-            'productcol' => $request->productcol,
-            'meta' => $request->meta,
-            'is_active' => $is_active,
-            'is_appear' => $is_appear,
-            'description' => $request->description,
+            'title'             => $request->title,
+            'slug'              => $request->slug,
+            'brand_id'          => $request->brand_id,
+            'barcode'           => $request->barcode,
+            'productcol'        => $request->productcol,
+            'meta'              => $request->meta,
+            'is_active'         => $is_active,
+            'is_appear'         => $is_appear,
+            'description'       => $request->description,
         ]);
         if($response=true){
             return "success";

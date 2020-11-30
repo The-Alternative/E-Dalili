@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//route('products.get_all');
+
 
 Route::resource('/brands','BrandsController');
 Route::resource('/categories','CategoriesController');
@@ -30,8 +29,6 @@ Route::resource('/products','ProductsController');
 Route::get('/products/get_by_category/{category_id}','ProductsController@get_by_category');
 Route::resource('/products','ProductsController');
 Route::resource('/products','ProductsController');
-
-//Route::post('/products/get_all','ProductsController@get_all');
 Route::patch('/products/get_all','ProductsController@get_all');
 Route::get('/trashed_brands', 'BrandsController@trashed')->name('trashed.index');
 Route::get('/stores/addProducts','StoresController@addProducts');

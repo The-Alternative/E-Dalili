@@ -49,7 +49,7 @@ class CategoriesService
     }
 
     public function edit($category){
-        return view('categories.create')->with('category',$category)->with('categories',category::all());
+        return view('categories.edit')->with('category',$category)->with('categories',category::all());
     }
 
     public function update($request,$category){

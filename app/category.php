@@ -22,4 +22,7 @@ class category extends Model
     public function category(){
         return $this->belongsTo(category::class);
     }
+    public function store_category_images(){
+        return $this->hasMany(Store_Category_Image::class);
+    }
 }
