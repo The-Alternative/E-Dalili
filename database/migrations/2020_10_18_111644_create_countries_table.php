@@ -21,6 +21,8 @@ class CreateCountriesTable extends Migration
             $table->boolean('is_active');
             $table->string('call_perfix');
             $table->string('zip_code');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
         });
     }
