@@ -6,12 +6,17 @@
     <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scal=1, user-scalable=no">  <!-- First Mobile Meta -->
 
     <title>E-DALELY Design</title>
-    <link href="<?php echo e(url('/css/project.css')); ?>" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo e(url('/css/bootstrap.min.css')); ?>" >
     <link rel="stylesheet" href="<?php echo e(url('/fontawesome/css/all.css')); ?>">
+    <link href="<?php echo e(url('/css/project.css')); ?>" rel="stylesheet">
 
 </head>
 <body>
+
+
+
+
 <div class="upper-bar">
     <div class="row">
         <div class="col-md-2 col-sm-12 col-xs-12 imag">
@@ -66,6 +71,7 @@
 
 
 <!-- End Upper Bar -->
+
 
 <!-- Start landing -->
 <div class="jumbotron">
@@ -135,7 +141,7 @@
                 <div>
                     <button type="button" class="btn btn-light sell">مھرجان العروضات والتخفیضات</button>
                 </div>
-                <img src="img/icons/icon-button.png">
+                <img src="<?php echo e(asset('img/icon/1.png')); ?>">
                 <div>
                     <button type="button" class="btn btn-light">متاجر</button>
                 </div>
@@ -160,15 +166,22 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 <div class="show-prod">
     <div class="container">
         <div class="text-right mini">صدر حدیثا</div>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="content-pro text-center">
-                    <img src="img/products/w.jpg" class="new">
-                    <div class="name-prod">playبلسم شعر من </div>
-                    <div class="color-prod">201اللون : كریمي رقم </div>
+
+                        <img src="<?php echo e(asset('storage/'.$recentProductImages[0]->image)); ?>" class="new">
+
+                    <div class="name-prod"><?php echo e($recentProducts[0]->title); ?></div>
+                    <div class="color-prod"> اللون :<?php echo e($recentProducts[0]->customfields[0]->pivot->value); ?>  </div>
                     <div class="stars">
                         <span class="fa fa-star  checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -183,9 +196,9 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="content-pro text-center NYW">
-                    <img src="img/products/fgfg.jpg" class="new">
-                    <div class="name-prod"> NYX طلاء أظافر من</div>
-                    <div class="color-prod">للون : شفاف 700 </div>
+                    <img src="<?php echo e(asset('storage/'.$recentProductImages[1]->image)); ?>" class="new">
+                    <div class="name-prod"><?php echo e($recentProducts[1]->title); ?></div>
+                    <div class="color-prod">اللون :  <?php echo e($recentProducts[1]->customfields[0]->pivot->value); ?> </div>
                     <div class="stars">
                         <span class="fa fa-star  checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -200,9 +213,9 @@
             </div>
             <div class="col-lg-3 col-md-4">
                 <div class="content-pro text-center KAIDISI">
-                    <img src="img/products/as.jpg" class="new">
-                    <div class="name-prod"> لون12علبة الوان مائیة جافة</div>
-                    <div class="color-prod">KAIDISI</div>
+                    <img src="<?php echo e(asset('storage/'.$recentProductImages[2]->image)); ?>" class="new">
+                    <div class="name-prod"> <?php echo e($recentProducts[2]->title); ?></div>
+                    <div class="color-prod"> اللون :<?php echo e($recentProducts[2]->customfields[0]->pivot->value); ?>  </div>
                     <div class="stars">
                         <span class="fa fa-star  checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -217,9 +230,9 @@
             </div>
             <div class="col-lg-3">
                 <div class="content-pro text-center NYX">
-                    <img src="img/products/rt.jpg" class="new">
-                    <div class="name-prod">NYX كونسلیر</div>
-                    <div class="color-prod">201اللون : كریمي رقم </div>
+                    <img src="<?php echo e(asset('storage/'.$recentProductImages[3]->image)); ?>" class="new">
+                    <div class="name-prod"><?php echo e($recentProducts[3]->title); ?></div>
+                    <div class="color-prod"> اللون :<?php echo e($recentProducts[3]->customfields[0]->pivot->value); ?>  </div>
                     <div class="stars">
                         <span class="fa fa-star  checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -317,11 +330,11 @@
 </div>
 <!-- show market-->
 <div class="show-market">
-    <img src="img/dre/IMG_%D9%A2%D9%A0%D9%A2%D9%A0%D9%A1%D9%A0%D9%A1%D9%A4_%D9%A1%D9%A6%D9%A4%D9%A7%D9%A2%D9%A5.png">
-    <img src="img/dre/IMG_%D9%A2%D9%A0%D9%A2%D9%A0%D9%A1%D9%A0%D9%A1%D9%A4_%D9%A1%D9%A6%D9%A4%D9%A7%D9%A4%D9%A5.png">
-    <img src="img/dre/IMG_%D9%A2%D9%A0%D9%A2%D9%A0%D9%A1%D9%A0%D9%A1%D9%A4_%D9%A1%D9%A6%D9%A4%D9%A8%D9%A1%D9%A6.png">
-    <img src="img/dre/IMG_%D9%A2%D9%A0%D9%A2%D9%A0%D9%A1%D9%A0%D9%A1%D9%A4_%D9%A1%D9%A6%D9%A4%D9%A8%D9%A2%D9%A7.png">
-    <img src="img/dre/IMG_%D9%A2%D9%A0%D9%A2%D9%A0%D9%A1%D9%A0%D9%A1%D9%A4_%D9%A1%D9%A6%D9%A4%D9%A8%D9%A3%D9%A9.png">
+    <img src="<?php echo e(asset('/img/dre/11.png')); ?>">
+    <img src="<?php echo e(asset('/img/dre/22.png')); ?>">
+    <img src="<?php echo e(asset('/img/dre/33.png')); ?>">
+    <img src="<?php echo e(asset('/img/dre/44.png')); ?>">
+    <img src="<?php echo e(asset('/img/dre/55.png')); ?>">
 </div>
 <!-- show 3 products -->
 <div class="back-of products">
@@ -408,10 +421,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 img text-center">
-                <img src="img/dre/224_Mesa%20de%20trabajo%201.jpg">
+                <img src="<?php echo e(asset('/img/dre/66.jpg')); ?>">
             </div>
             <div class="col-lg-6 img text-center">
-                <img src="img/dre/banner-1.jpg">
+                <img src="<?php echo e(asset('/img/dre/77.jpg')); ?>">
             </div>
         </div>
     </div>
@@ -682,13 +695,12 @@
                 <a class="carousel-control-next" href="#demo" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
-                <!-- ------------------------------------------------------------ -->
                 <div class="col-sm-3 imges">
-                    <img src="img/dre/gasses.jpg">
-                    <img src="img/dre/my%20home.jpg">
+                    <img src="<?php echo e(asset('img/dre/88.jpg')); ?>">
+                    <img src="<?php echo e(asset('img/dre/99.jpg')); ?>">
                 </div>
                 <div class="col-sm-9 imgs">
-                    <img src="img/dre/HEADPHONES.jpg" style="width: 100%">
+                    <img src="<?php echo e(asset('img/dre/HEADPHONES.jpg')); ?>" style="width: 100%">
                 </div>
             </div>
         </div>
@@ -994,13 +1006,13 @@
             </div>
             <hr>
             <div class="imag">
-                <img src="img/logo/logo-3.png">
+                <img src="<?php echo e(asset('img/logo/logo-3.png')); ?>">
             </div>
             <div class="row" style="width: 1140px;">
                 <div class="col-md-2 col-sm-4 col-xs-4 text-center">
                     <div class="dlely-card">
                         <div>E-DALELY Points</div>
-                        <img src="img/icons/icon-card.png">
+                        <img src="<?php echo e(asset('img/icon/4.png')); ?>">
                     </div>
 
                 </div>
@@ -1008,13 +1020,13 @@
                     <div class="work-us">
 
                         <div><span>Get It On</span>Google Play</div>
-                        <img src="img/icons/icon-google-play.png">
+                        <img src="<?php echo e(asset('img/icon/3.png')); ?>">
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-4 text-center">
                     <div class="work-us" style="padding-top: 3px">
                         <div>App Store</div>
-                        <img src="img/icons/icon-appel.png">
+                        <img src="<?php echo e(asset('img/icon/2.png')); ?>">
                     </div>
 
                 </div>

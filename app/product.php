@@ -25,6 +25,27 @@ class product extends Model
     public function brand(){
         return $this->belongsTo(brand::class);
     }
+
+    public function comparePrices(){
+        $stores = $this->first()->stores()->get();
+        foreach ($stores as $store){
+            $x[]=$store->pivot->price;
+        }
+        $y=999999999999999999999999999999999999;
+        $e=0;
+        foreach ($x as $t){
+            if ($t<$y){
+                $y=$t;
+            }
+            if ($t>$e){
+                $e=$t;
+            }
+        }
+
+        $min = $y;
+        $max = $e;
+        return $min.$max;
+    }
     protected $fillable = ['title','slug','brand_id','barcode','productcol','meta','is_active','is_appear','description'];
     protected $attributes = [
 //        'brand_id' => 1,

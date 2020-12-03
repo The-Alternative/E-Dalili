@@ -41,4 +41,6 @@ Route::get('/stores/getAproovedStores','StoresController@getAproovedStores');
 Route::resource('/stores','StoresController');
 Route::get('/stores/getActiveStores','StoresController@getActiveStores');
 Route::resource('/stores','StoresController');
+Route::get('/stores/comparePrices/{product}','StoresController@comparePrices')->name('store.comparePrices');
+Route::resource('/stores','StoresController');
 Route::resource('/stores','StoresController');

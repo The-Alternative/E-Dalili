@@ -24,7 +24,7 @@
 
                                 </td>
                                 <td>
-                                    <form class="float-right ml-2" action="<?php echo e(route('products.destroy', $product->id)); ?>" method="POST">
+                                    <form class="float-right ml-2" action="<?php echo e(route('products.destroy', $product)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
                                         <button class="btn btn-danger btn-sm">

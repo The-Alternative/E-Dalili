@@ -190,7 +190,8 @@ private $pimage;
     public function delete(Product $product){
         session()->flash('success','product deleted successfuly');
         $response=$product->update([
-            'is_appear' => false
+            'is_appear' => false,
+            'is_active' => false
         ]);
         return redirect(route('products.index'));
     }
