@@ -23,7 +23,7 @@
                                     {{ $product->title }}
                                 </td>
                                 <td>
-                                    <form class="float-right ml-2" action="{{route('products.destroy', $product->id)}}" method="POST">
+                                    <form class="float-right ml-2" action="{{route('products.destroy', $product)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm">

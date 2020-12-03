@@ -159,9 +159,9 @@ class StoresController extends Controller
 
     }
 
-    public function comparePrices($product)
+    public function comparePrices($productId)
     {
-        return $this->storeService->comparePrices($product);
+        return $this->storeService->comparePrices($productId);
 
     }
 

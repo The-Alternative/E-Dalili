@@ -119,8 +119,8 @@ class StoreService
         return $this->storeModel::all()->where('id',$id);
     }
 
-    public function comparePrices(product $product){
-        $stores = $this->product->where('id',$product->id)->first()->stores()->get();
+    public function comparePrices($id){
+        $stores = $this->product->where('id',$id)->first()->stores()->get();
             foreach ($stores as $store){
                 $x[]=$store->pivot->price;
              }
