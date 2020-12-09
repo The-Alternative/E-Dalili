@@ -18,25 +18,20 @@ class Store extends Model
         return $this->hasMany(Store_Category_Image::class);
     }
 
-    public function comparePrices(product $product){
-        $stores = $product->where('id',$product->id)->first()->stores()->get();
-        foreach ($stores as $store){
-            $x[]=$store->pivot->price;
-        }
-        $y=999999999999999999999999999999999999;
-        $e=0;
-        foreach ($x as $t){
-            if ($t<$y){
-                $y=$t;
-            }
-            if ($t>$e){
-                $e=$t;
-            }
-        }
+    public function store_ratings(){
+        return $this->hasMany(Store_Rating::class);
+    }
 
-        $min = $y;
-        $max = $e;
-        return 'min='.$min.'and max='.$max;
+    public function product_store_ratings(){
+        return $this->hasMany(Product_Store_Rating::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function payments(){
+        return $this->belongsToMany(Payment::class)->withTimestamps()->withPivot(['is_active','note']);
     }
 
 

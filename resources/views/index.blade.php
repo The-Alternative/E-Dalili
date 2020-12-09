@@ -13,21 +13,12 @@
 
 </head>
 <body>
-{{--@foreach($products as $product)--}}
-{{--    <div><span>{{$product->title}}</span></div>--}}
-{{--    <div><span>{{$product->created_at}}</span></div>--}}
-{{--@endforeach--}}
 <div class="upper-bar">
     <div class="row">
         <div class="col-md-2 col-sm-12 col-xs-12 imag">
             <img src="{{url('/img/logo/logo-4.png')}}">
         </div>
-
-
-
         <div class="col-md-10 col-sm-12  col-xs-12 text-center">
-
-
             <div class="customer-select sel4">
                 <select>
                     <option>العربية</option>
@@ -56,7 +47,6 @@
             </div>
             <div class="customer-select sel1">
                 <select>
-
                     <option>المحافظة</option>
                     @foreach($governorates as $governorate)
                         <option value="{{$governorate->id}}">{{$governorate->name}}</option>
@@ -65,17 +55,12 @@
             </div>
             <span class="lang">اللغة</span><i class="fa fa-map-marker"></i>
         </div>
-
     </div>
 </div>
-
-
 <!-- End Upper Bar -->
-<div class="btn-danger text-center">{{(count($categories[2]->products))}}</div>
+{{--<div class="btn-danger text-center">{{$categories[6]->products[0]}}</div>--}}
 <!-- Start landing -->
 <div class="jumbotron">
-
-
     <div class="container">
         <div class="row">
             <div class="search col-xs-12 text-center">
@@ -83,24 +68,22 @@
             </div>
             <div class="col-xs-12 text-center">
                 <div class="featuers">
+                  <a href="{{route('login')}}"  style="color: #635f5f">
                     <div> <span>E-Dalely</span> أضف متجرك إلى منصة</div>
+                  </a>
                     <i class="fa fa-shopping-cart"></i><div class="shopping">عربة التسوق</div>
                     <i class="fa fa-map-marker"></i><div class="map">حدد موقعك</div>
-
                     <i class="fa fa-user-circle "> </i>  <div class="user">تسجیل الدخول</div>
                 </div> </div>
         </div>
     </div>
-
 </div>
-
 <!-- End landing -->
 <!-- Start Navbar-->
 <div class="navbars">
     <div class="container">
         <div class="row text-right">
             <div class="col-sm-12">
-
                 @foreach($categories as $category)
                     <div>
                         <a class="nav-link" href="#">{{$category->name}}</a>
@@ -109,7 +92,6 @@
                 <div>
                     <a class="nav-link" href="#">جمیع الأقسام</a>
                 </div>
-
             </div>
         </div></div>
 </div>
@@ -150,7 +132,6 @@
             </div>
         </div></div>
 </div>
-
 <!-- End Naver-->
 <!-- Start Products -->
 <div class="show-img">
@@ -173,14 +154,13 @@
             @for($i=0;$i<4;$i++)
                 <div class="{{$i==0 ? 'col-lg-3 col-md-4 col-sm-6 col-xs-12' : ''}}{{$i==1 ? 'col-lg-3 col-md-4 col-sm-6' : ''}}{{$i==2 ? 'col-lg-3 col-md-4' : ''}}{{$i==3 ? 'col-lg-3' : ''}}">
                     <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
-                        <img src="{{ asset('storage/'.$recentProductImages[$i]->image) }}" class="new">
+                        <img src="{{ asset('storage/'.$recentProducts[$i]->product_images[0]->image) }}" class="new">
                         <div class="name-mobile">{{$recentProducts[$i]->title}}</div>
-
                         <div class="stars">
-                            <span class="fa fa-star  checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </div>
                         <div> @if(count($recentProducts[$i]->stores)>0) <span>ل.س</span> @endif <div class="price" style="display: inline-block">  @if(count($recentProducts[$i]->stores)>0)
@@ -203,7 +183,6 @@
                     </div>
                 </div>
             @endfor
-
         </div>
     </div>
 </div>
@@ -215,9 +194,8 @@
                 @for($i=0;$i<count($recentProducts);$i++)
                     <div class="{{$i==0 ? 'col-lg-3 col-md-4 col-sm-6 col-xs-12' : ''}}{{$i==1 ? 'col-lg-3 col-md-4 col-sm-6' : ''}}{{$i==2 ? 'col-lg-3 col-md-4' : ''}}{{$i==3 ? 'col-lg-3' : ''}}">
                         <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
-                            <img src="{{ asset('storage/'.$recentProductImages[$i]->image) }}" class="new">
+                            <img src="{{ asset('storage/'.$recentProducts[$i]->product_images[0]->image) }}" class="new">
                             <div class="name-mobile">{{$recentProducts[$i]->title}}</div>
-
                             <div class="stars">
                                 <span class="fa fa-star  checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -245,7 +223,6 @@
                         </div>
                     </div>
                 @endfor
-
             </div>
         </div>
     </div>
@@ -264,7 +241,6 @@
                         <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
                             <img src="{{ asset('storage/'.$categories[6]->products[$i]->product_images[0]->image) }}" class="shcool">
                             <div class="name-mobile">{{$categories[6]->products[$i]->title}}</div>
-
                             <div class="stars">
                                 <span class="fa fa-star  checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -292,7 +268,6 @@
                         </div>
                     </div>
                 @endfor
-
             </div>
         </div>
     </div>
@@ -310,7 +285,6 @@
                             <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
                                 <img src="{{ asset('storage/'.$categories[6]->products[$i]->product_images[0]->image) }}" class="shcool">
                                 <div class="name-mobile">{{$categories[6]->products[$i]->title}}</div>
-
                                 <div class="stars">
                                     <span class="fa fa-star  checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -338,7 +312,6 @@
                             </div>
                         </div>
                     @endfor
-
                 </div>
             </div>
         </div>
@@ -364,7 +337,6 @@
                     <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
                         <img src="{{ asset('storage/'.$categories[2]->products[$i]->product_images[0]->image) }}" class="phone">
                         <div class="name-mobile">{{$categories[2]->products[$i]->title}}</div>
-
                         <div class="stars">
                             <span class="fa fa-star  checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -392,7 +364,6 @@
                     </div>
                 </div>
                 @endfor
-
             </div>
         </div>
     </div>
@@ -410,7 +381,6 @@
                             <div class="{{$i==0 ? 'content-pro text-center' : ''}}{{$i==1 ? 'content-pro text-center NYW' : ''}}{{$i==2 ? 'content-pro text-center KAIDISI' : ''}}{{$i==3 ? 'content-pro text-center NYX' : ''}}">
                                 <img src="{{ asset('storage/'.$categories[2]->products[$i]->product_images[0]->image) }}" class="phone">
                                 <div class="name-mobile">{{$categories[2]->products[$i]->title}}</div>
-
                                 <div class="stars">
                                     <span class="fa fa-star  checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -438,7 +408,6 @@
                             </div>
                         </div>
                     @endfor
-
                 </div>
             </div>
         </div>
@@ -460,9 +429,7 @@
 <!-- --------------------------------------------- -->
 <div id="demo" class="carousel slide" data-ride="carousel">
     <div class="container">
-
         <!-- Indicators -->
-
         <!-- The slideshow -->
         <div class="row" style="width: 100%">
             <div class="col-lg-3 col-sm-4 col-xs-12">
@@ -484,9 +451,7 @@
                 <div class="carousel-inner">
                     <?php $count = 0 ; ?>
                     @for($i=0; $i<round((count($categories[2]->products)/3));$i++)
-
                     <div class="carousel-item {{$i==0 ? 'active' : ''}}">
-
                         <div class="show2-prod">
                             <div class="container">
                                 <div class="row">
@@ -495,7 +460,6 @@
                                         <div class="content-pro text-center">
                                             <img src="{{ asset('storage/'.$categories[2]->products[$count]->product_images[0]->image) }}" class="phone">
                                             <div class="name-mobile">{{$categories[2]->products[$count]->title}}</div>
-
                                             <div class="stars">
                                                 <span class="fa fa-star  checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -561,7 +525,6 @@
                                         <div class="content-pro text-center KAIDISI NYX">
                                             <img src="{{ asset('storage/'.$categories[2]->products[$count+2]->product_images[0]->image) }}" class="phone">
                                             <div class="name-mobile">{{$categories[2]->products[$count+2]->title}}</div>
-
                                             <div class="stars">
                                                 <span class="fa fa-star  checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -592,12 +555,10 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                             <?php $count = $count+3 ?>
                     @endfor
                 </div>
-
                 <!-- Left and right controls -->
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -618,13 +579,10 @@
 </div>
 <!-- new products -->
 <div id="deno" class="carousel slide" data-ride="carousel" style="margin-top: 40px;">
-
     <div class="col-sm-12">
-
         <div class="carousel-inner2">
             <?php $count = 0 ; ?>
             @for($i=0; $i<round((count($categories[2]->products)/4)+1);$i++)
-
                 <div class="carousel-item {{$i==0 ? 'active' : ''}}">
                 <div class="show2-prod" style="background-image: linear-gradient(180deg, #fff, #828282)">
                     <div class="container">
@@ -634,7 +592,6 @@
                                 <div class="content-pro text-center">
                                     <img src="{{ asset('storage/'.$categories[2]->products[$count]->product_images[0]->image) }}" class="phone">
                                     <div class="name-mobile">{{$categories[2]->products[$count]->title}}</div>
-
                                     <div class="stars">
                                         <span class="fa fa-star  checked"></span>
                                         <span class="fa fa-star checked"></span>
@@ -667,7 +624,6 @@
                                 <div class="content-pro text-center NYW">
                                     <img src="{{ asset('storage/'.$categories[2]->products[$count+1]->product_images[0]->image) }}" class="phone">
                                     <div class="name-mobile">{{$categories[2]->products[$count+1]->title}}</div>
-
                                     <div class="stars">
                                         <span class="fa fa-star  checked"></span>
                                         <span class="fa fa-star checked"></span>
@@ -700,7 +656,6 @@
                                 <div class="content-pro text-center KAIDISI">
                                     <img src="{{ asset('storage/'.$categories[2]->products[$count+2]->product_images[0]->image) }}" class="phone">
                                     <div class="name-mobile">{{$categories[2]->products[$count+2]->title}}</div>
-
                                     <div class="stars">
                                         <span class="fa fa-star  checked"></span>
                                         <span class="fa fa-star checked"></span>
@@ -733,7 +688,6 @@
                                 <div class="content-pro text-center NYX">
                                     <img src="{{ asset('storage/'.$categories[2]->products[$count+3]->product_images[0]->image) }}" class="phone">
                                     <div class="name-mobile">{{$categories[2]->products[$count+3]->title}}</div>
-
                                     <div class="stars">
                                         <span class="fa fa-star  checked"></span>
                                         <span class="fa fa-star checked"></span>
@@ -764,14 +718,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
                     <?php $count = $count+4 ?>
                 @endfor
-
-
         </div>
-
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#deno" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -779,12 +729,8 @@
         <a class="carousel-control-next" href="#deno" data-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
-
     </div>
-
 </div>
-
-
 <!-- End Products -->
 <!-- Start About-Us -->
 <div class="about-us">
@@ -837,7 +783,6 @@
                         <div>E-DALELY Points</div>
                         <img src="{{asset('img/icon/4.png')}}">
                     </div>
-
                 </div>
                 <div class="col-md-2 col-sm-4 text-center">
                     <div class="work-us">
@@ -851,7 +796,6 @@
                         <div>App Store</div>
                         <img src="{{asset('img/icon/2.png')}}">
                     </div>
-
                 </div>
                 <div class="col-md-3 col-sm-6 visiter text-center">
                     <ul>
@@ -863,7 +807,6 @@
                         <li></li>
                         <li></li>
                     </ul>
-
                 </div>
                 <div class="col-md-3 col-sm-6 visiter text-cnter">
                     <ul>

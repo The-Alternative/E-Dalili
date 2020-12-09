@@ -2,8 +2,12 @@
 
 
 namespace App\Service;
+use App\category;
+use App\City;
+use App\Governorate;
 use App\product;
 use App\Store;
+use App\Street;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -141,7 +145,12 @@ class StoreService
     }
 
     public function index(){
-        return view('stores.index')->with('stores',Store::all()->where('is_active',true));
+        return view('stores.index')->with('stores',Store::all()->where('is_active',true))
+            ->with('cities',City::all()->where('is_active',true))
+            ->with('governorates',Governorate::all()->where('is_active',true))
+            ->with('streets',Street::all()->where('is_active',true))
+            ->with('categories',category::all()->where('is_active',true))
+            ;
     }
 
     public function create(){
