@@ -1,6 +1,5 @@
 @extends('layouts.app2');
-
-@section('content')
+@section('first')
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -38,6 +37,8 @@
         </div>
     </nav>
     </div>
+@endsection
+@section('second')
     @if(count($stores[0]->products)>=4)
         <div class="show-prod">
             <div class="container">
@@ -99,5 +100,9 @@
             </div>
         </div>
     @endif
-
 @endsection
+{{--@section('first')--}}
+{{--    <div class="btn-danger text-center mt-5 mb-5 pt-5 pb-5">xxxxxxxxxx</div>--}}
+{{--@endsection--}}
+
+

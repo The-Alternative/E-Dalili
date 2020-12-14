@@ -6,6 +6,7 @@ use App\category;
 use App\custom_field;
 use App\Http\Requests\ProductRequest;
 use App\product;
+use App\Store;
 
 use App\product_image;
 use Illuminate\Http\Request;
@@ -170,6 +171,7 @@ private $pimage;
 
     public function index(){
         return view('products.index')->with('products',product::all()->where('is_active',true));
+
     }
 
     public function create(){

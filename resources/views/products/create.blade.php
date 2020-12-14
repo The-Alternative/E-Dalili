@@ -578,3 +578,9 @@
     </script>
 @endsection
 
+{{--<script>--}}
+{{--    <div class="file-upload-wrapper">--}}
+{{--        <input type="file" id="input-file-now" name="image[]" class="file-upload" placeholder="Add product image" >--}}
+{{--        </div>--}}
+{{--    $('.file-upload').file_upload();--}}
+{{--</script>--}}

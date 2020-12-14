@@ -7,6 +7,7 @@ namespace App\Service;
 use App\Order;
 use App\Order_Status;
 use App\Payment;
+use App\product;
 use App\Store;
 use App\User;
 
@@ -87,6 +88,21 @@ class OrderService
         $response=$order::update([
            'is_active'  => false
         ]);
+    }
+
+    public function update_qty($request,$store_id,$product_id){
+        $qty=product::with('stores')->where('id',$product_id)->get();
+        $x= $qty[0]->stores;
+        foreach ($x as $y)
+            if ($y->id == $store_id){
+                $z= $y->pivot->qty;
+            }
+        $links=[];
+        for($i=0;$i<$request->counter;$i++){
+            $links[$request->product[$i]] = ['qty'=>($z - (int)$request->qty[$i])];
+        }
+        $store = Store::all()->where('id',$store_id)->get();
+        $store->products()->sync($links);
     }
 
 }

@@ -96,9 +96,12 @@
 
 <!-- End landing -->
 </div>
-
-        @yield('content')
-
+        @if(true)
+        @yield('first')
+        @endif
+        @if(true)
+        @yield('second')
+        @endif
 <!-- Start About-Us -->
 <div class="about-us">
     <div class="container">
