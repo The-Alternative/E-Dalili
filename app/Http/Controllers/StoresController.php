@@ -103,7 +103,7 @@ class StoresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response|void
      */
     public function addProducts(Request $request,Store $store)
     {
@@ -115,7 +115,7 @@ class StoresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response|void
      */
     public function updateProducts(Request $request,Store $store)
     {
@@ -127,7 +127,7 @@ class StoresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Store[]|\Illuminate\Database\Eloquent\Collection|Response
      */
     public function getAllStores()
     {
@@ -139,7 +139,7 @@ class StoresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Store[]|\Illuminate\Database\Eloquent\Collection|Response
      */
     public function getAproovedStores()
     {
@@ -151,7 +151,7 @@ class StoresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Store[]|\Illuminate\Database\Eloquent\Collection|Response
      */
     public function getActiveStores()
     {

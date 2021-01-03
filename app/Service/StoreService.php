@@ -2,8 +2,13 @@
 
 
 namespace App\Service;
+use App\category;
+use App\City;
+use App\Governorate;
 use App\product;
+use App\product_image;
 use App\Store;
+use App\Street;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -12,12 +17,14 @@ class StoreService
 {
     private $product;
     private $storeModel;
+    private $pimage;
 
-    public function __construct(product $product,Store $store)
+    public function __construct(product $product,Store $store,product_image $product_image)
     {
 
         $this->storeModel=$store;
         $this->product=$product;
+        $this->pimage=$product_image;
 
     }
 
@@ -141,7 +148,12 @@ class StoreService
     }
 
     public function index(){
-        return view('stores.index')->with('stores',Store::all()->where('is_active',true));
+        return view('stores.index')->with('stores',Store::all()->where('is_active',true))
+            ->with('cities',City::all()->where('is_active',true))
+            ->with('governorates',Governorate::all()->where('is_active',true))
+            ->with('streets',Street::all()->where('is_active',true))
+            ->with('categories',category::all()->where('is_active',true))
+            ->with('products',product::all()->where('is_active',true));
     }
 
     public function create(){
@@ -154,6 +166,78 @@ class StoreService
             'users'      =>User::all(),
             'products'   =>product::all()
         ]);
+    }
+
+    public function addProductToDataBase(Request $request)
+    {
+        $request['brand_id']=(int)$request['brand_id'];
+        $request->validate([
+            "title"          => "required:products",
+            "slug"           => "required:products",
+            "barcode"        => "required:products",
+            "productcol"     => "required:products",
+            "meta"           => "required:products",
+            "description"    => "required:products",
+        ]);
+        if ($request->is_active){
+            $is_active=true;
+        }else{
+            $is_active=false;
+        }
+        if ($request->is_appear){
+            $is_appear=true;
+        }else{
+            $is_appear=false;
+        }
+
+        //var_dump($request);
+        $response=$this->product::create([
+            'title'         => $request->title,
+            'slug'          => $request->slug,
+            'brand_id'      => $request->brand_id,
+            'barcode'       => $request->barcode,
+            'productcol'    => $request->productcol,
+            'meta'          => $request->meta,
+            'is_active'     => $is_active,
+            'is_appear'     => false,
+            'description'   => $request->description,
+        ]);
+        for ($i=0;$i<(int)$request->counter;$i++){
+            $response->customfields()->attach($request->custom_field[$i],[
+                'value' => $request->value[$i],
+                'description' => "sssssss",
+            ]);
+        }
+        for ($i=0;$i<(int)$request->ccounter;$i++){
+            $response->categories()->attach($request->category[$i],['description'=>$request->cdescription[$i]]);
+        }
+
+
+
+        for ($i = 0;$i< (int)$request->icounter;$i++){
+            $e =$i + 1;
+            if ( (int)$request->iscover == $e ){
+                $xx[$i]=true;
+            }else{
+                $xx[$i]=false;
+            }
+        }
+        for ($i = 0;$i< (int)$request->icounter;$i++) {
+
+            $this->pimage::create([
+                'product_id' => $response->id,
+                'image'      =>$request->image[$i]->store('images','public'),
+                'is_cover'   =>$xx[$i]
+            ]);
+
+
+
+        }
+
+        session()->flash('success','product created successfuly');
+
+        return $request;
+
     }
 //    public function deleteProductsfromStore(Request $request,Store $store){
 //

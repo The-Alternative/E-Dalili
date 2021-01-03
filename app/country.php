@@ -11,4 +11,8 @@ class country extends Model
     public function governorates(){
         return $this->hasMany(Governorate::class);
     }
+
+    public function currencies(){
+        return $this->hasMany(Currency::class);
+    }
 }

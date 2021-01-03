@@ -26,26 +26,15 @@ class product extends Model
         return $this->belongsTo(brand::class);
     }
 
-    public function comparePrices(){
-        $stores = $this->first()->stores()->get();
-        foreach ($stores as $store){
-            $x[]=$store->pivot->price;
-        }
-        $y=999999999999999999999999999999999999;
-        $e=0;
-        foreach ($x as $t){
-            if ($t<$y){
-                $y=$t;
-            }
-            if ($t>$e){
-                $e=$t;
-            }
-        }
-
-        $min = $y;
-        $max = $e;
-        return $min.$max;
+    public function product_store_ratings(){
+        return $this->hasMany(Product_Store_Rating::class);
     }
+
+    public function order_details(){
+        return $this->hasMany(Order_Details::class);
+    }
+
+
     protected $fillable = ['title','slug','brand_id','barcode','productcol','meta','is_active','is_appear','description'];
     protected $attributes = [
 //        'brand_id' => 1,

@@ -26,7 +26,6 @@ class WelcomService
             ->with('categories',category::all()->where('is_active',true))
             ->with('customs',custom_field::all()->where('is_active',true))
             ->with('recentProducts',product::orderBy('created_at','desc')->take(4)->get())
-            ->with('recentProductImages',product_image::orderBy('created_at','desc')->where('is_cover',true)->take(4)->get())
             ->with('lastStores',Store::all()->where('is_active',true)->where('is_approved',true)->take(9))
             ->with('brands',brand::orderBy('created_at','desc')->take(5)->get())
             ->with('Products',product::all())
