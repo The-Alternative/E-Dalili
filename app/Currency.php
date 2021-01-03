@@ -10,5 +10,5 @@ class Currency extends Model
         return $this->belongsTo(country::class);
     }
 
-    protected $fillable = ['country_id','currency_code','usd_ratio'];
+    protected $fillable = ['country_id','currency_code','usd_ratio','is_active'];
 }

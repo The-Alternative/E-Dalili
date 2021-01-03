@@ -34,6 +34,18 @@ class Store extends Model
         return $this->belongsToMany(Payment::class)->withTimestamps()->withPivot(['is_active','note']);
     }
 
+    public function store_design(){
+        return $this->hasOne(Store_Design::class);
+    }
+
+    public function store_nav_design(){
+        return $this->hasOne(Store_Nav_Design::class);
+    }
+
+    public function store_header_images(){
+        return $this->hasMany(Store_Header_Image::class);
+    }
+
 
 
     protected $fillable = ['title','user_id','is_active','is_approved','default_lang','phone_number','bussiness_email','logo','address','location','working_hours','working_days'];
