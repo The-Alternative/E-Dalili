@@ -15,7 +15,13 @@ class CityService
         $this->cityModel = $city;
     }
     public function index(){
-        return view('cities.index')->with('cities',City::all()->where('is_active',true));
+
+        $arr = Array(
+            [
+                'cities' =>City::all()->where('is_active',true),
+            ]
+        );
+        return $arr;
     }
 
     public function create(){

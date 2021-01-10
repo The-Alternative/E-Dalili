@@ -21,10 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bc7735c0-2512-4d4e-a57a-b47ed27635aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Currency.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Currency.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Shipment_Status_Catalog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Shipment_Status_Catalog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Shipment_Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Shipment_Type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Store.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Store.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/BrandService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/BrandService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/CityService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/CityService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/WelcomService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/WelcomService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +139,8 @@
       <workItem from="1607931551584" duration="10852000" />
       <workItem from="1608016473324" duration="5910000" />
       <workItem from="1608536795755" duration="6842000" />
+      <workItem from="1610269935658" duration="4303000" />
+      <workItem from="1610281477755" duration="5677000" />
     </task>
     <servers />
   </component>

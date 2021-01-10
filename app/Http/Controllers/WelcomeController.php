@@ -28,7 +28,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return $this->welcomService->index();
+        $response = $this->welcomService->index();
+        return json_encode($response);
     }
 
 }
