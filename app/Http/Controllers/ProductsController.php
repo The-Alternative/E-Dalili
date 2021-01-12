@@ -80,7 +80,19 @@ private $response;
      */
     public function edit(Product $product)
     {
+//<<<<<<< HEAD
         return $this->productService->edit($product);
+//=======
+        return view('products.create')
+        ->with('product',$product)
+        ->with('brands',brand::all())
+        ->with('custom_fields',custom_field::all())
+        ->with('pcustoms',product_customfield::all()
+        ->where('product_id',$product->id))
+        ->with('categories',category::all())
+        ->with('pcategories',product_category::all()
+        ->where('product_id',$product->id));
+//>>>>>>> aca03b873f07700450f968bca908c7aae4a68b51
     }
 
     /**
@@ -124,7 +136,14 @@ private $response;
      */
     public function create()
     {
+//<<<<<<< HEAD
         return $this->productService->create();
+//=======
+        return view('products.create')
+        ->with('brands',brand::all())
+        ->with('custom_fields',custom_field::all())
+        ->with('categories',category::all());
+//>>>>>>> aca03b873f07700450f968bca908c7aae4a68b51
     }
 
 

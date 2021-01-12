@@ -1,0 +1,1 @@
+<h1>index for customer_type</h1>
