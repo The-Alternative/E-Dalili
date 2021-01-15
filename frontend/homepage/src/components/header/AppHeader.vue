@@ -82,6 +82,7 @@
       </div>
     </div>
     <!-- End landing -->
+
     <!-- Start navbar-->
     <div id="nav" class="naver">
       <div class="container">
@@ -147,7 +148,132 @@
       </div>
     </div>
     <!-- End Naver -->
+<!-- Start Section-->
 
+       <div class="section">
+       <div class="responsive">
+         <div class="gallery">
+             <router-link to="/">
+           <a target="_blank" href="@/assets/S1.png">
+             <img src="@/assets/S1.png" alt="Cinque Terre" width="600" height="400">
+           </a>
+             </router-link>
+           <div class="desc">
+              كمبیوترات واكسسواراتھا
+            </div>
+         </div>
+       </div>
+
+
+       <div class="responsive">
+         <div class="gallery">
+             <router-link to="/">
+           <a target="_blank" href="@/assets/S1.png">
+             <img src="@/assets/S1.png" alt="Forest" width="600" height="400">
+           </a>
+           </router-link>
+           <div class="desc">موبایلات واكسسواراتھا</div>
+         </div>
+       </div>
+
+       <div class="responsive">
+         <div class="gallery">
+             <router-link to="/">
+           <a target="_blank" href="@/assets/S1.png">
+             <img src="@/assets/S1.png" alt="Northern Lights" width="600" height="400">
+           </a>
+           </router-link>
+           <div class="desc">
+            البقالة
+            </div>
+         </div>
+       </div>
+
+       <div class="responsive">
+         <div class="gallery">
+             <router-link to="/">
+           <a target="_blank" href="@/assets/S1.png">
+             <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+           </a>
+           </router-link>
+           <div class="desc">
+            لجمال والعنایة الشخصیة
+            </div>
+         </div>
+       </div>
+       <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+          </router-link>
+          <div class="desc">جمیع الأقسام</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+          </router-link>
+          <div class="desc">
+            عالم الطفل
+            </div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+          </router-link>
+          <div class="desc">
+            دیكور و مفروشات
+            </div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+          </router-link>
+          <div class="desc">
+            قرطاسیة وتعلیم
+            </div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+          </router-link>
+          <div class="desc">
+            المنزل والمطبخ
+            </div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+            <router-link to="/">
+          <a target="_blank" href="@/assets/S1.png">
+            <img src="@/assets/S1.png" alt="Mountains" width="600" height="400">
+          </a>
+            </router-link>
+          <div class="desc">
+            أجھزة كھربائیة والكترونیة
+            </div>
+        </div>
+      </div>
+
+       </div>
+       <!-- End Section-->
   </div>
 </template>
 
@@ -665,5 +791,80 @@ export default {
 }
 /* End Naver*/
 
-/* End navbar*/
+/* Start Section  */
+.section{
+    height: 400px;
+}
+ div.gallery {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+
+  div.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  div.desc {
+
+    text-align: center;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .responsive {
+    padding: 0;
+    float: left;
+    width: 18%;
+    margin: 1%;
+  }
+  /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .section{
+    height: 350px;
+}
+}
+  /*  Medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    div.desc {
+    font-size: 12px;
+      }
+    .section{
+    height: 300px;
+}
+ }
+
+ /* Small devices (landscape phones, 576px and up)   */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .responsive {
+    width: 18%;
+    }
+    div.desc {
+        font-size: 9px;
+          }
+    .section{
+    height: 240px;
+}
+  }
+
+  /* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .responsive {
+      width: 18%;
+    }
+    div.desc {
+        font-size: 6px;
+          }
+   .section{
+    height: 150px;
+}
+  }
+  /* End Section */
 </style>
