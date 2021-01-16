@@ -89,7 +89,7 @@ Route::get('/social_media/edit', 'SocialMediaController@edit')->name('social_med
     Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
   //  Route::resource('/products','EmployeeController');
    // Route::resource('/products','EmployeeController');
-    
+
     Route::get('/permission/index', 'PermissionController@index')->name('permission.index');
     Route::get('/permission/create', 'PermissionController@create')->name('permission.create');
     Route::post('/permission/store', 'PermissionController@store')->name('permission.store');
@@ -101,9 +101,17 @@ Route::get('/social_media/edit', 'SocialMediaController@edit')->name('social_med
     Route::post('/role/store', 'RoleController@store')->name('role.store');
     Route::get('/role/destroy', 'RoleController@destroy')->name('role.destroy');
     Route::get('/role/edit', 'RoleController@edit')->name('role.edit');
-    
+
 //});
 
+
+
+Route::get ('/post/index' ,'PostController@index' );
+Route::get ('/post/create' ,'PostController@create' );
+Route::post('/post/store', 'PostController@store');
+Route::get('/post/{id}','PostController@show');
+Route::get ('/post/destroy', 'PostController@destroy');
+Route::get ('/post/edit', 'PostController@edit');
 
 
 
