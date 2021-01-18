@@ -108,7 +108,7 @@ Route::get('/social_media/edit', 'SocialMediaController@edit')->name('social_med
 
 Route::get ('/post/index' ,'PostController@index' );
 Route::get ('/post/create' ,'PostController@create' );
-Route::post('/post/store', 'PostController@store');
+
 Route::get('/post/{id}','PostController@show');
 Route::get ('/post/destroy', 'PostController@destroy');
 Route::get ('/post/edit', 'PostController@edit');

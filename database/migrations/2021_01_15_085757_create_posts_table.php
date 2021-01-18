@@ -17,12 +17,10 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->integer('store_id');
             $table->integer('product_id');
-            $table->integer('social_media_id');
             $table->string('description');
             $table->boolean('is_active');
             $table->integer('price');
             $table->integer('new_price');
-            $table->integer('saving_value');
             $table->date('start_date');
             $table->date('end_date');
             $table->time('time');

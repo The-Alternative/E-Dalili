@@ -4,7 +4,8 @@
 namespace App\Service;
 
 use App\Post;
-use http\Env\Request;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -30,7 +31,7 @@ class PostService
 
       }
 
-     public function store( $request)
+     public function store(Request $request)
      {
               if ($request->is_active){
                          $is_active=true;
@@ -39,22 +40,20 @@ class PostService
                      }
 
 
-            $response=$this->postModel::create([
+          $post=new Post();
 
-             'store_id'       => $request-> store_id,
-             'product_id'     => $request-> product_id,
-             'social_media_id'=> $request-> social_media_id,
-             'description'    => $request-> description,
-             'is_active'      => $is_active,
-             'price'          => $request-> price,
-             'new_price'      => $request-> new_price,
-             'start_date'     => $request-> start_date,
-             'end_date'       => $request-> end_date,
-             'time'           => $request-> time,
+            $post-> store_id        = $request-> store_id;
+            $post-> product_id      = $request-> product_id;
+            $post-> description     = $request-> description;
+            $post-> is_active       = $request->is_active;
+            $post-> price           = $request-> price;
+            $post-> new_price       = $request-> new_price;
+            $post-> start_date      = $request-> start_date;
+            $post-> end_date        = $request-> end_date;
+            $post-> time            = $request-> time;
 
-         ]);
-       session()->flash('success','post created successfuly');
-               return redirect(route('Post.index'));
+          $post ->save();
+       return response()->json($post);
 
      }
      public function postDetails($id)
@@ -69,7 +68,8 @@ class PostService
 
      }
 
-     public function destroy($post){
+     public function destroy($post)
+     {
             $response = $post::update([
                 'is_active' => false,
             ]);

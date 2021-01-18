@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
