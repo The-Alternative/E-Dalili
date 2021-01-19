@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class category extends Model
 {
     protected $fillable = ['name','slug','parent_id','image','is_active'];
@@ -25,4 +26,9 @@ class category extends Model
     public function store_category_images(){
         return $this->hasMany(Store_Category_Image::class);
     }
+    public function post()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
+

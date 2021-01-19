@@ -15,7 +15,8 @@ class CreateRatePostsTable extends Migration
     {
         Schema::create('rate_posts', function (Blueprint $table) {
             $table->id();
-            $table->integer ('customer_id');
+            $table->integer (
+                'customer_id');
             $table->integer('posts_id');
             $table->timestamps();
         });

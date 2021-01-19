@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\brand;
+use App\Models\partner;
 use App\Post;
 
 
@@ -18,12 +20,12 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     private $PostService;
-    private $response;
 
-    public function __construct(PostService $PostService,Response  $response)
+
+    public function __construct(PostService $PostService)
     {
         $this->PostService=$PostService;
-        $this->response=$response;
+
     }
 
     /**
@@ -75,11 +77,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Post $post)
     {
         return $this->PostService->edit($post);
-
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -90,7 +93,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->PostService->update($id , $request);
     }
 
     /**
@@ -99,8 +102,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+        $post= Post::find($id);
+
+        $post->is_active=$request->is_active;
+
+        $post->save();
+
+        return  response()->json($post);
+
     }
 }

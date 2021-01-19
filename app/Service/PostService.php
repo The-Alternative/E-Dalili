@@ -21,15 +21,20 @@ class PostService
       }
       public function index()
       {
-
-             return view('Post.index')->with('Posts',Post::all()->where('is_active',true));
-
+            $post = DB :: table( 'Posts')
+              ->where('is_active','=',1)
+              ->get();
+              return response()->json($post);
       }
+
       public function create()
       {
               return view('Post.create')->with('Posts',Post::all());
 
       }
+      public function edit($post){
+              return view('Post.edit')->with('posts',Post::all()->where('is_active',true));
+          }
 
      public function store(Request $request)
      {
@@ -58,22 +63,31 @@ class PostService
      }
      public function postDetails($id)
      {
-       return $this->postmodel::all()->where('id',$id);
+       $post = Post:: find($id);
+
+       return response()->json($post);
 
      }
 
-     public function edit($post)
+     public function update($id ,Request $request)
      {
-         return view('Post.create')->with('post',$post);
+        $post= Post :: find($id);
+
+        $post-> store_id         = $request ->store_id;
+        $post-> product_id       = $request->product_id;
+        $post-> description      = $request-> description;
+        $post-> is_active        = $request->is_active;
+        $post-> price            = $request-> price;
+        $post-> new_price        = $request-> new_price;
+        $post-> start_date       = $request-> start_date;
+        $post-> end_date         = $request-> end_date;
+        $post-> time             = $request-> time;
+
+        $post->save();
+        return response()->json($post);
 
      }
 
-     public function destroy($post)
-     {
-            $response = $post::update([
-                'is_active' => false,
-            ]);
-         }
 
 
 }

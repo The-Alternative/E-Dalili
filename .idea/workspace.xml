@@ -24,7 +24,9 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Service/PostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/PostService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_15_085757_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_15_085757_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_18_091151_create_rate_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_18_091151_create_rate_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Post/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Post/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
@@ -158,7 +160,10 @@
       <workItem from="1610830411477" duration="535000" />
       <workItem from="1610871880709" duration="10081000" />
       <workItem from="1610913930184" duration="2479000" />
-      <workItem from="1610959964387" duration="6250000" />
+      <workItem from="1610959964387" duration="9943000" />
+      <workItem from="1610981192834" duration="8416000" />
+      <workItem from="1611047936210" duration="3249000" />
+      <workItem from="1611053859804" duration="3481000" />
     </task>
     <servers />
   </component>
