@@ -39,15 +39,6 @@ class PostController extends Controller
         return $this->PostService->index();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return $this->PostService->create();
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -71,17 +62,7 @@ class PostController extends Controller
         return $this->PostService->postDetails($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
-    public function edit(Post $post)
-    {
-        return $this->PostService->edit($post);
-    }
 
 
     /**
@@ -104,13 +85,7 @@ class PostController extends Controller
      */
     public function destroy($id,Request $request)
     {
-        $post= Post::find($id);
-
-        $post->is_active=$request->is_active;
-
-        $post->save();
-
-        return  response()->json($post);
+        return $this->PostService->destroy($id, $request);
 
     }
 }

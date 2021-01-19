@@ -21,4 +21,4 @@ Route::post('/post/store','PostController@store');
 
 Route::put ('/postupdate/{id}', 'PostController@update');
 
-Route::put ('/post/destroy/{id}', 'PostController@destroy');
+Route::put ('/postdestroy/{id}', 'PostController@destroy');

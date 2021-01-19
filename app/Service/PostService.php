@@ -27,14 +27,14 @@ class PostService
               return response()->json($post);
       }
 
-      public function create()
-      {
-              return view('Post.create')->with('Posts',Post::all());
+      public function postDetails($id)
+          {
+            $post = Post:: find($id);
 
-      }
-      public function edit($post){
-              return view('Post.edit')->with('posts',Post::all()->where('is_active',true));
+            return response()->json($post);
+
           }
+
 
      public function store(Request $request)
      {
@@ -61,13 +61,7 @@ class PostService
        return response()->json($post);
 
      }
-     public function postDetails($id)
-     {
-       $post = Post:: find($id);
 
-       return response()->json($post);
-
-     }
 
      public function update($id ,Request $request)
      {
@@ -87,6 +81,17 @@ class PostService
         return response()->json($post);
 
      }
+      public function destroy($id,Request $request)
+         {
+             $post= Post::find($id);
+
+             $post->is_active=$request->is_active;
+
+             $post->save();
+
+             return  response()->json($post);
+
+         }
 
 
 
