@@ -18,20 +18,32 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/brands/show/{id}','BrandsController@show')->name('brands.show');
 Route::resource('/brands','BrandsController');
+Route::get('/trashed_brands', 'BrandsController@trashed')->name('trashed.index');
+
+Route::get('/categories/show/{id}','CategoriesController@show')->name('categories.show');
 Route::resource('/categories','CategoriesController');
+
+Route::get('/countries/show/{id}','CountriesController@show')->name('countries.show');
 Route::resource('/countries','CountriesController');
+
+Route::get('/custom_fields/show/{id}','Custom_FieldsController@show')->name('custom_fields.show');
 Route::resource('/custom_fields','Custom_FieldsController');
+
+Route::get('/languages/show/{id}','LanguagesController@show')->name('languages.show');
 Route::resource('/languages','LanguagesController');
+
+Route::get('/products/show/{id}','ProductsController@show')->name('products.show');
 Route::get('/products/get_all','ProductsController@get_all');
 Route::resource('/products','ProductsController');
 Route::get('/products/get_by_category/{category_id}','ProductsController@get_by_category');
 Route::resource('/products','ProductsController');
 Route::resource('/products','ProductsController');
 Route::patch('/products/get_all','ProductsController@get_all');
-Route::get('/trashed_brands', 'BrandsController@trashed')->name('trashed.index');
-//<<<<<<< HEAD
+
+
+Route::get('/stores/show/{id}','StoresController@show')->name('stores.show');
 Route::get('/stores/addProducts','StoresController@addProducts');
 Route::resource('/stores','StoresController');
 Route::get('/stores/updateProducts','StoresController@updateProducts');
@@ -45,74 +57,59 @@ Route::resource('/stores','StoresController');
 Route::get('/stores/comparePrices/{product}','StoresController@comparePrices')->name('store.comparePrices');
 Route::resource('/stores','StoresController');
 Route::resource('/stores','StoresController');
-//=======
+
+Route::get('/cities/show/{id}','CitiesController@show')->name('cities.show');
+Route::resource('/cities','CitiesController');
+
+Route::get('/currencies/show/{id}','CurrenciesController@show')->name('currencies.show');
+Route::resource('/currencies','CurrenciesController');
+
+Route::get('/governorates/show/{id}','GovernoratesController@show')->name('governorates.show');
+Route::resource('/governorates','GovernoratesController');
+
+Route::get('/orderDetails/show/{id}','OrderDetailsController@show')->name('orderDetails.show');
+Route::resource('/orderDetails','OrderDetailsController');
+
+Route::get('/orders/show/{id}','OrdersController@show')->name('orders.show');
+Route::resource('/orders','OrdersController');
+
+Route::get('/orderStatuses/show/{id}','OrderStatusController@show')->name('orderStatuses.show');
+Route::resource('/orderStatuses','OrderStatusController');
+
+Route::get('/payments/show/{id}','PaymentsController@show')->name('payments.show');
+Route::resource('/payments','PaymentsController');
+
+Route::get('/productStoreRatings/show/{id}','ProductStoreRatingsController@show')->name('productStoreRatings.show');
+Route::resource('/productStoreRatings','ProductStoreRatingsController');
+
+Route::get('/shipment_Status_Cataloges/show/{id}','Shipment_Status_CatalogesController@show')->name('shipment_Status_Cataloges.show');
+Route::resource('/shipment_Status_Cataloges','Shipment_Status_CatalogesController');
+
+Route::get('/shipment_Statuses/show/{id}','Shipment_StatusessController@show')->name('shipment_Statuses.show');
+Route::resource('/shipment_Statuses','Shipment_StatusessController');
+
+Route::get('/shipment_Types/show/{id}','Shipment_TypesController@show')->name('shipment_Types.show');
+Route::resource('/shipment_Types','Shipment_StatusessController');
+
+Route::get('/shippings/show/{id}','ShippingsController@show')->name('shippings.show');
+Route::resource('/shippings','ShippingsController');
+
+Route::get('/store_Category_Images/show/{id}','Store_Category_ImagesController@show')->name('store_Category_Images.show');
+Route::resource('/store_Category_Images','Store_Category_ImagesController');
+
+Route::get('/store_Designs/show/{id}','Store_DesignsController@show')->name('store_Designs.show');
+Route::resource('/store_Designs','Store_DesignsController');
+
+Route::get('/store_Header_Images/show/{id}','Store_Header_ImagesController@show')->name('store_Header_Images.show');
+Route::resource('/store_Header_Images','Store_Header_ImagesController');
+
+Route::get('/store_Nav_Designs/show/{id}','Store_Nav_DesignsController@show')->name('store_Nav_Designs.show');
+Route::resource('/store_Nav_Designs','Store_Nav_DesignsController');
+
+Route::get('/storeRatings/show/{id}','StoreRatingsController@show')->name('storeRatings.show');
+Route::resource('/storeRatings','StoreRatingsController');
+
+Route::get('/streets/show/{id}','StreetsController@show')->name('streets.show');
+Route::resource('/streets','StreetsController');
 
 
-
-
-Route::get('/customer/index', 'CustomerController@index')->name('customer.index');
-Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
-Route::post('/customer/store', 'CustomerController@store')->name('customer.store');
-Route::get('/customer/destroy', 'CustomerController@destroy')->name('customer.destroy');
-Route::get('/customer/edit', 'CustomerController@edit')->name('customer.edit');
-
-Route::get('/customer_type/index', 'CustomerTypeController@index')->name('customer_type.index');
-Route::get('/customer_type/create', 'CustomerTypeController@create')->name('customer_type.create');
-Route::post('/customer/store', 'CustomerController@store')->name('customer.store');
-Route::get('/customer/destroy', 'CustomerController@destroy')->name('customer.destroy');
-Route::get('/customer/edit', 'CustomerController@edit')->name('customer.edit');
-
-Route::get('/bunch/index', 'BunchController@index')->name('bunch.index');
-Route::get('/bunch/create', 'BunchController@create')->name('bunch.create');
-Route::post('/bunch/store', 'BunchController@store')->name('bunch.store');
-Route::get('/bunch/destroy', 'BunchController@destroy')->name('bunch.destroy');
-Route::get('/bunch/edit', 'BunchController@edit')->name('bunch.edit');
-
-Route::get('/bunch_details/index', 'BunchDetailsController@index')->name('bunch_details.index');
-Route::get('/bunch_details/create', 'BunchDetailsController@create')->name('bunch_details.create');
-Route::post('/bunch_details/store', 'BunchDetailsController@store')->name('bunch_details.store');
-Route::get('/bunch_details/destroy', 'BunchDetailsController@destroy')->name('bunch_details.destroy');
-Route::get('/bunch_details/edit', 'BunchDetailsController@edit')->name('bunch_details.edit');
-
-Route::get('/social_media/index', 'SocialMediaController@index')->name('social_media.index');
-Route::get('/social_media/create', 'SocialMediaController@create')->name('social_media.create');
-Route::post('/social_media/store', 'SocialMediaController@store')->name('social_media.store');
-Route::get('/social_media/destroy', 'SocialMediaController@destroy')->name('social_media.destroy');
-Route::get('/social_media/edit', 'SocialMediaController@edit')->name('social_media.edit');
-
-//this routes only for general admin role
-//Route::middleware(['auth','generalAdmin'])->group(function(){
-    Route::get('/employee/index', 'EmployeeController@index')->name('employee.index');
-    Route::get('/employee/create', 'EmployeeController@create')->name('employee.create');
-    Route::post('/employee/store', 'EmployeeController@store')->name('employee.store');
-    Route::get('/employee/destroy', 'EmployeeController@destroy')->name('employee.destroy');
-    Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
-  //  Route::resource('/products','EmployeeController');
-   // Route::resource('/products','EmployeeController');
-
-    Route::get('/permission/index', 'PermissionController@index')->name('permission.index');
-    Route::get('/permission/create', 'PermissionController@create')->name('permission.create');
-    Route::post('/permission/store', 'PermissionController@store')->name('permission.store');
-    Route::get('/permission/destroy', 'PermissionController@destroy')->name('permission.destroy');
-    Route::get('/permission/{permission}/edit', 'PermissionController@edit')->name('permission.edit');
-
-    Route::get('/role/index' ,'RoleController@index' )->name('role.index');
-    Route::get('/role/create' ,'RoleController@create' )->name('role.create');
-    Route::post('/role/store', 'RoleController@store')->name('role.store');
-    Route::get('/role/destroy', 'RoleController@destroy')->name('role.destroy');
-    Route::get('/role/edit', 'RoleController@edit')->name('role.edit');
-
-//});
-
-
-
-   Route::get ('/post/index' ,'PostController@index' );
-   Route::get('/post/{id}','PostController@show');
-
-
-
-
-
-
-
-//>>>>>>> aca03b873f07700450f968bca908c7aae4a68b51

@@ -37,17 +37,17 @@ class WelcomService
             ]
         );
         return $arr;
-//         return view('index')->with('cities',City::all()->where('is_active',true))
-//             ->with('governorates',Governorate::all()->where('is_active',true))
-//             ->with('streets',Street::all()->where('is_active',true))
-//             ->with('categories',category::all()->where('is_active',true))
-//             ->with('customs',custom_field::all()->where('is_active',true))
-//             ->with('recentProducts',product::orderBy('created_at','desc')->take(4)->get())
-//             ->with('lastStores',Store::all()->where('is_active',true)->where('is_approved',true)->take(9))
-//             ->with('brands',brand::orderBy('created_at','desc')->take(5)->get())
-//             ->with('Products',product::all())
-//             ->with('stores',Store::all()->where('is_active',true)->where('is_approved',true))
-//             ;
+//        return response('index')->with('cities',City::all()->where('is_active',true))
+//            ->with('governorates',Governorate::all()->where('is_active',true))
+//            ->with('streets',Street::all()->where('is_active',true))
+//            ->with('categories',category::all()->where('is_active',true))
+//            ->with('customs',custom_field::all()->where('is_active',true))
+//            ->with('recentProducts',product::orderBy('created_at','desc')->take(4)->get())
+//            ->with('lastStores',Store::all()->where('is_active',true)->where('is_approved',true)->take(9))
+//            ->with('brands',brand::orderBy('created_at','desc')->take(5)->get())
+//            ->with('Products',product::all())
+//            ->with('stores',Store::all()->where('is_active',true)->where('is_approved',true))
+//            ;
     }
 //     return product::with(['categories' => function ($query) {
 //            $query->orderBy('created_at', 'desc');
