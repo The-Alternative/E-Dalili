@@ -39,6 +39,17 @@ class PostController extends Controller
         return $this->PostService->index();
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return $this->PostService->postDetails($id);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -51,16 +62,6 @@ class PostController extends Controller
         return $this->PostService->store($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $this->PostService->postDetails($id);
-    }
 
 
 
