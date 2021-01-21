@@ -36,7 +36,10 @@ class PostController extends Controller
      */
     public function getAllPosts ()
     {
-        return $this->PostService->getAllPosts();
+        $response= $this->PostService->getAllPosts();
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
     /**
@@ -47,7 +50,10 @@ class PostController extends Controller
      */
     public function getById($id)
     {
-        return $this->PostService->getById($id);
+        $response= $this->PostService->getById($id);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
 
@@ -59,7 +65,10 @@ class PostController extends Controller
      */
     public function createNewPost(Request $request)
     {
-        return $this->PostService->createNewPost($request);
+        $response= $this->PostService->createNewPost($request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
 
@@ -75,7 +84,10 @@ class PostController extends Controller
      */
     public function updatePost(Request $request, $id)
     {
-        return $this->PostService->updatePost($id , $request);
+        $response= $this->PostService->updatePost($id , $request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
     /**
@@ -86,7 +98,10 @@ class PostController extends Controller
      */
     public function DeletePost($id,Request $request)
     {
-        return $this->PostService->DeletePost($id, $request);
+        $response= $this->PostService->DeletePost($id, $request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
 
     }
 }

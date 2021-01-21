@@ -27,7 +27,10 @@ class PostImageController extends Controller
      */
     public function getAllImages ()
     {
-        return $this->PostImageService-> getAllImages();
+        $response= $this->PostImageService-> getAllImages();
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
     /**
@@ -38,7 +41,10 @@ class PostImageController extends Controller
      */
     public function getById($id)
     {
-        return $this->PostImageService->getById($id);
+        $response= $this->PostImageService->getById($id);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
 
@@ -50,7 +56,10 @@ class PostImageController extends Controller
      */
     public function createNewImage(Request $request)
     {
-        return $this->PostImageService->createNewImage($request);
+        $response= $this->PostImageService->createNewImage($request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
 
@@ -66,7 +75,10 @@ class PostImageController extends Controller
      */
     public function updateImage(Request $request, $id)
     {
-        return $this->PostImageService->updateImage($id , $request);
+        $response= $this->PostImageService->updateImage($id , $request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
     }
 
     /**
@@ -77,7 +89,10 @@ class PostImageController extends Controller
      */
     public function DeleteImage($id,Request $request)
     {
-        return $this->PostImageService->DeleteImage($id, $request);
+        $response= $this->PostImageService->DeleteImage($id, $request);
+        return  response($response,200)
+            ->header('Access-control-Allow-Origin','*')
+            ->header('Access-control-Allow-Methods','*');
 
     }
 }

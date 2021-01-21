@@ -56,6 +56,7 @@ class PostService
             $post-> start_date      = $request-> start_date;
             $post-> end_date        = $request-> end_date;
             $post-> time            = $request-> time;
+            $post-> Post_Type       = $request-> Post_Type ;
 
           $post ->save();
        return response()->json($post);
@@ -76,6 +77,7 @@ class PostService
         $post-> start_date       = $request-> start_date;
         $post-> end_date         = $request-> end_date;
         $post-> time             = $request-> time;
+        $post-> Post_Type        = $request-> Post_Type ;
 
         $post->save();
         return response()->json($post);
