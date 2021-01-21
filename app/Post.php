@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\category;
+
+use App\Post_Image;
 
 class Post extends Model
 {
@@ -15,7 +17,11 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsToMany(category::clss);
+        return $this->belongsToMany(category::class);
 
+    }
+    public function PostsImage()
+    {
+        return $this->belongsToMany(Post_Image::class);
     }
 }

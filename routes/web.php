@@ -56,7 +56,7 @@ Route::get('/stores/getActiveStores','StoresController@getActiveStores');
 Route::resource('/stores','StoresController');
 Route::get('/stores/comparePrices/{product}','StoresController@comparePrices')->name('store.comparePrices');
 Route::resource('/stores','StoresController');
-Route::resource('/stores','StoresController');
+//Route::resource('/stores','StoresController');
 
 Route::get('/cities/show/{id}','CitiesController@show')->name('cities.show');
 Route::resource('/cities','CitiesController');
@@ -112,4 +112,10 @@ Route::resource('/storeRatings','StoreRatingsController');
 Route::get('/streets/show/{id}','StreetsController@show')->name('streets.show');
 Route::resource('/streets','StreetsController');
 
+
+Route::get('/posts','PostController@getAllPosts');
+Route::get('/post/{id}','PostController@getById');
+
+Route::get('/images','PostImageController@getAllImages');
+Route::get('/image/{id}','PostImageController@getById');
 

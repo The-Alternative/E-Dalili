@@ -21,10 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bc7735c0-2512-4d4e-a57a-b47ed27635aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/BrandService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/BrandService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/CityService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/CityService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/WelcomService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/WelcomService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/PostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/PostService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_15_085757_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_15_085757_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
@@ -59,11 +60,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img/dre" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -141,6 +143,9 @@
       <workItem from="1608536795755" duration="6842000" />
       <workItem from="1610269935658" duration="4303000" />
       <workItem from="1610281477755" duration="5677000" />
+      <workItem from="1611128858356" duration="534000" />
+      <workItem from="1611221541582" duration="429000" />
+      <workItem from="1611222380944" duration="8701000" />
     </task>
     <servers />
   </component>
@@ -158,84 +163,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="309" y="42" key="#Inspections" timestamp="1605792482691">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="309" y="42" key="#Inspections/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605792482691" />
-    <state x="434" y="187" key="#Notifications" timestamp="1608542502554">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="434" y="187" key="#Notifications/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1608542502554" />
-    <state x="317" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605008821740">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="317" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605008821740" />
-    <state x="420" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603095163132">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="420" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603095163132" />
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605704147254">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605704147254" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608541070411">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1603192214607" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1608541070411" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1605351065197" />
-    <state x="430" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1607504604560">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="430" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1607504604560" />
-    <state x="460" y="276" key="ComposerInitDialogKey" timestamp="1605705040525">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="460" y="276" key="ComposerInitDialogKey/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1605705040525" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603403312082">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603093264454" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603403312082" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603403312082">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603093264454" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603403312082" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603403312082">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603093264453" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603403312082" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603403312082">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1603093264454" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603403312082" />
-    <state x="445" y="86" key="NewPhpClassDialog" timestamp="1608537249093">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="1811" y="86" key="NewPhpClassDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1603190845439" />
-    <state x="445" y="86" key="NewPhpClassDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1608537249093" />
-    <state x="445" y="86" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1605349462861" />
-    <state x="518" y="287" key="NewPhpFileDialog" timestamp="1605349400858">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="518" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1605349400858" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1607949427307">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1607949427307" />
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603402957243" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1605099852881">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1605099852881" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607934581856">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1607934581856" />
   </component>
 </project>

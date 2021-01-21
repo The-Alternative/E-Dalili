@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\brand;
-use App\Models\partner;
+
+
 use App\Post;
 
 
@@ -34,9 +34,9 @@ class PostController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View\Illuminate\Http\Response
      *
      */
-    public function index()
+    public function getAllPosts ()
     {
-        return $this->PostService->index();
+        return $this->PostService->getAllPosts();
     }
 
     /**
@@ -45,9 +45,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getById($id)
     {
-        return $this->PostService->postDetails($id);
+        return $this->PostService->getById($id);
     }
 
 
@@ -57,9 +57,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function createNewPost(Request $request)
     {
-        return $this->PostService->store($request);
+        return $this->PostService->createNewPost($request);
     }
 
 
@@ -73,9 +73,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePost(Request $request, $id)
     {
-        return $this->PostService->update($id , $request);
+        return $this->PostService->updatePost($id , $request);
     }
 
     /**
@@ -84,9 +84,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,Request $request)
+    public function DeletePost($id,Request $request)
     {
-        return $this->PostService->destroy($id, $request);
+        return $this->PostService->DeletePost($id, $request);
 
     }
 }

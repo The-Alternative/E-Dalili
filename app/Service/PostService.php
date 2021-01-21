@@ -19,7 +19,7 @@ class PostService
           $this->postmodel=$post;
 
       }
-      public function index()
+      public function getAllPosts()
       {
             $post = DB :: table( 'Posts')
               ->where('is_active','=',1)
@@ -27,7 +27,7 @@ class PostService
               return response()->json($post);
       }
 
-      public function postDetails($id)
+      public function getById($id)
           {
             $post = Post:: find($id);
 
@@ -36,7 +36,7 @@ class PostService
           }
 
 
-     public function store(Request $request)
+     public function createNewPost(Request $request)
      {
               if ($request->is_active){
                          $is_active=true;
@@ -63,7 +63,7 @@ class PostService
      }
 
 
-     public function update($id ,Request $request)
+     public function updatePost($id ,Request $request)
      {
         $post= Post :: find($id);
 
@@ -81,7 +81,7 @@ class PostService
         return response()->json($post);
 
      }
-      public function destroy($id,Request $request)
+      public function DeletePost($id,Request $request)
          {
              $post= Post::find($id);
 

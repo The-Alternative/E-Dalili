@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->time('time');
+            $table->tinyInteger('Post_Type');
             $table->timestamps();
         });
     }
