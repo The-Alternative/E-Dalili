@@ -18,7 +18,7 @@ class BrandService
     }
 
     public function index(){
-        return view('brands.index')->with('brands',brand::all());
+        return brand::all();
     }
 
     public function create(){
@@ -39,16 +39,22 @@ class BrandService
         ]);
 
         session()->flash('success','brand created successfuly');
-        return redirect(route('brands.index'));
+        return $response;
 
     }
 
     public function show($id){
-        return $this->brandModel::all()->where('id',$id);
+         $response = $this->brandModel::all()->where('id',$id);
+         return $response;
     }
 
     public function edit($brand){
-        return view('brands.create')->with('brand',$brand);
+        $arr = Array(
+            [
+                $brand,
+            ]
+        );
+        return $arr;
     }
 
     public function update($request,$brand){
@@ -65,9 +71,9 @@ class BrandService
                 'description' => $request->description]);
         }
         if($response=true){
-            return "success";
+            return true;
         }else{
-            return "faild";
+            return false;
         }
     }
     public function destroy($id){
@@ -76,16 +82,16 @@ class BrandService
             Storage::disk('public')->delete($brand->image);
             $brand->forceDelete();
             session()->flash('success','brand Deleted successfuly');
-            return redirect(route('trashed.index'));
+            return true;
         }else {
             $brand->delete();
             session()->flash('success','brand Trashed successfuly');
-            return redirect(route('brands.index'));
+            return false;
         }
     }
 
     public function trash(){
         $trashed = Brand::onlyTrashed()->get();
-        return view('brands.index')->withBrands($trashed);
+        return $trashed;
     }
 }
