@@ -24,7 +24,7 @@ class PostImageService
     }
     public function getAllImages()
     {
-        $image = DB :: table( 'Post__Images')
+        $image = DB :: table( 'post__images')
             ->where('is_active','=',1)
             ->get();
         return response()->json($image);

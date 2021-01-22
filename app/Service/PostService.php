@@ -21,7 +21,7 @@ class PostService
       }
       public function getAllPosts()
       {
-            $post = DB :: table( 'Posts')
+            $post = DB :: table( 'posts')
               ->where('is_active','=',1)
               ->get();
               return response()->json($post);
