@@ -16,6 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware'=>['api','checkPassword']],function(){
+    Route::get ('/stores/getAllStores', 'StoresController@getAllStores');
+    Route::post ('/stores/getStoreById', 'StoresController@getStoreById');
+
+
+});
 
 Route::post('/posts/createNewPost','PostController@createNewPost');
 
@@ -27,7 +33,9 @@ Route::put ('/post/delete/{id}', 'PostController@DeletePost');
 //////// Post Image Controller
 
 Route::post('/images/createNewImage','PostImageController@createNewImage');
-
 Route::put ('/images/update/{id}', 'PostImageController@updateImage');
-
 Route::put ('/image/delete/{id}', 'PostImageController@DeleteImage');
+
+
+Route::get ('/stores/getAllStores', 'StoresController@getAllStores');
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\GeneralTrait;
 use App\Http\Requests\ProductRequest;
 use App\product;
 use App\Service\StoreService;
@@ -12,6 +13,7 @@ use Illuminate\Http\Response;
 
 class StoresController extends Controller
 {
+    use GeneralTrait;
     private $storeService;
     private $response;
 
@@ -131,7 +133,11 @@ class StoresController extends Controller
      */
     public function getAllStores()
     {
-        return $this->storeService->stores();
+        //return $this->storeService->stores();
+        $response= $this->storeService->stores();
+        return response($response, 200)
+                    ->header('Access-Control-Allow-Origin', '*')
+                    ->header('Access-Control-Allow-Methods', '*');
 
     }
 
@@ -156,6 +162,11 @@ class StoresController extends Controller
     public function getActiveStores()
     {
         return $this->storeService->activeStores();
+
+    }
+    public function getStoreById(Request $request , Store $store)
+    {
+        return $this->storeService->getStoreById($request,$store);
 
     }
 

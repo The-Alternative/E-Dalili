@@ -2,6 +2,7 @@
 
 
 namespace App\Service;
+use App\Traits\GeneralTrait;
 use App\category;
 use App\City;
 use App\Governorate;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 
 class StoreService
 {
+    use GeneralTrait;
     private $product;
     private $storeModel;
     private $pimage;
@@ -238,6 +240,14 @@ class StoreService
 
         return $request;
 
+    }
+    public function getStoreById($request,$store)
+    {
+      $store = Store::find($request->id);
+       if (!$store)
+       return $this->returnError('404', 'This store does not exist ');
+
+   return $this->returnData('store',$store,'The data has been fetched successfully');
     }
 //    public function deleteProductsfromStore(Request $request,Store $store){
 //
